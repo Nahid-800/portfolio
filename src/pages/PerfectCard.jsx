@@ -3,24 +3,25 @@ import React from 'react'
 function TechStack() {
   return (
     <>
-        <section className='flex items-center flex-col md:flex-row md:gap-12 lg:gap-20 px-5 sm:px-10 md:px-16 lg:px-24 py-16 md:py-20'>
+        {/* কলামের মধ্যে একটি মাঝারি গ্যাপ এবং সমান প্রস্থ রাখা হয়েছে */}
+        <section className='flex items-center flex-col md:flex-row md:gap-12 px-5 sm:px-10 md:px-16 lg:px-24 py-16 md:py-20'>
             
-            {/* ইমেজ / SVG (বাম পাশ) */}
-            <div className='w-full md:w-5/12 mb-10 md:mb-0 flex justify-center'>
-                {/* max-w-lg ক্লাসটি ছবিকে অতিরিক্ত বড় হতে দেবে না */}
+            {/* ইমেজ কন্টেইনার (বাম পাশ) - ৫০% প্রস্থ */}
+            <div className='w-full md:w-1/2 mb-10 md:mb-0 flex justify-center'>
+                {/* এখন ছবিটি তার কন্টেইনারের পুরো জায়গা নেবে */}
                 <img 
-                    className='text-center w-full max-w-lg' 
+                    className='text-center w-full' 
                     src="/assets/tech-stack-illustration.png" // আপনার ছবির পাথ
                     alt="Technology stack illustration" 
                 />
             </div>
 
-            {/* টেক্সট কন্টেন্ট (ডান পাশ) */}
-            <div className='w-full md:w-7/12'>
+            {/* টেক্সট কন্টেইনার (ডান পাশ) - ৫০% প্রস্থ */}
+            <div className='w-full md:w-1/2'>
                 <h1 className='text-3xl md:text-4xl font-bold text-center md:text-start'>
                     The Technologies I Use
                 </h1>
-                {/* টেক্সটের আকার এবং লাইন স্পেসিং বাড়ানো হয়েছে */}
+                {/* পাঠযোগ্যতার জন্য টেক্সটের আকার ঠিক রাখা হয়েছে */}
                 <p className='py-7 text-center md:text-start text-base lg:text-lg leading-relaxed'>
                     I enjoy building modern, fast, and scalable web applications with a powerful set of tools. My primary tech stack includes <strong>React</strong> for building dynamic user interfaces and <strong>Tailwind CSS</strong> for efficient styling. I am passionate about writing clean, maintainable code to deliver the best possible user experience.
                 </p>
