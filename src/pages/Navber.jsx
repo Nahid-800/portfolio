@@ -1,129 +1,97 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { FiMenu, FiX } from 'react-icons/fi'; // আইকনের জন্য react-icons লাইব্রেরি ব্যবহার করা হয়েছে
 
-function Navber() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // নেভিগেশন আইটেমগুলোর জন্য একটি অ্যারে
-  const navItems = [
-    { id: 'home', text: 'Home', path: '/', icon: <i className="fa-solid fa-house"></i> },
-    { id: 'about', text: 'About', path: '/about', icon: <i className="fa-solid fa-user"></i> },
-    { id: 'contact', text: 'Contact', path: '/contact', icon: <i className="fa-solid fa-phone-volume"></i> },
-    { id: 'message', text: 'Message', path: '/dashboard', icon: <i className="fa-brands fa-facebook-messenger"></i> },
-  ];
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  
-  const handleLinkClick = () => {
-    setIsMenuOpen(false);
+    setIsOpen(!isOpen);
   };
 
-  // মেনু খোলা থাকলে পেছনের কন্টেন্টের স্ক্রলিং বন্ধ করার জন্য
-  useEffect(() => {
-    // এই লজিকটি সরানোর মাধ্যমে ওয়েবসাইট সাদা হয়ে যাওয়ার সমস্যাটি এড়ানো যেতে পারে, যদি আপনি scroll lock না চান। 
-    // যদি scroll lock দরকার হয়, তাহলে নিচের কোডটি রাখুন:
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
-  }, [isMenuOpen]);
+  const navLinks = [
+    { title: 'Home', path: '/' },
+    { title: 'About', path: '/about' },
+    { title: 'Contact', path: '/contact' },
+    { title: 'Message', path: '/dashboard' },
+  ];
 
   return (
-    <>
-      {/* মূল নেভিগেশন বার - z-[100] নিশ্চিত করে যে এটি উপরে আছে */}
-      <nav className="fixed top-0 left-0 right-0 z-[100] bg-gray-900/90 backdrop-blur-sm border-b border-gray-500/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            
-            {/* লোগো এবং নাম */}
-            <div className="flex-shrink-0">
-              <Link to="/" className="flex items-center gap-3 group">
-                <img className='h-12 w-12 rounded-full object-cover transition-transform duration-300 group-hover:scale-110' src="/logo2.jpg" alt="Logo" />
-                <span className='text-white text-xl md:text-2xl font-bold tracking-wider'>MyPortfolio</span>
-              </Link>
-            </div>
+    <nav className="bg-gray-900 bg-opacity-50 backdrop-blur-lg shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-20">
+          {/* Logo and Portfolio Name */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3">
+              <img className="h-12 w-12 rounded-full object-cover" src="/logo2.jpg" alt="Logo" />
+              <span className="text-white text-2xl font-bold transition-colors duration-300 hover:text-cyan-400">
+                MyPortfolio
+              </span>
+            </Link>
+          </div>
 
-            {/* ডেস্কটপ নেভিগেশন */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-2">
-                {navItems.map((item) => (
-                  <NavLink
-                    key={item.id}
-                    to={item.path}
-                    className={({ isActive }) =>
-                      `relative text-gray-300 hover:text-cyan-400 px-4 py-2 rounded-md text-md font-medium transition-colors duration-300 group
-                      ${isActive ? 'text-cyan-400' : ''}`
-                    }
-                  >
-                    {item.text}
-                    {/* অ্যানিমেটেড আন্ডারলাইন */}
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform transition-transform duration-300 ease-out
-                      ${isActive ? 'scale-x-100' : 'scale-x-0'} group-hover:scale-x-100`}
-                    ></span>
-                  </NavLink>
-                ))}
-              </div>
-            </div>
-
-            {/* মোবাইল ডিভাইসের জন্য হ্যামবার্গার মেনু বাটন */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={toggleMenu}
-                className="z-[101] inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white focus:outline-none"
-                aria-controls="mobile-menu"
-                aria-expanded={isMenuOpen}
-              >
-                {/* অ্যানিমেটেড হ্যামবার্গার/ক্লোজ আইকন */}
-                <div className="w-6 h-6 flex flex-col justify-around">
-                  <span className={`block w-full h-0.5 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? 'rotate-45 translate-y-[0.55rem]' : ''}`}></span>
-                  <span className={`block w-full h-0.5 bg-current transition duration-300 ease-in-out ${isMenuOpen ? 'opacity-0' : ''}`}></span>
-                  <span className={`block w-full h-0.5 bg-current transform transition duration-300 ease-in-out ${isMenuOpen ? '-rotate-45 -translate-y-[0.55rem]' : ''}`}></span>
-                </div>
-              </button>
+          {/* Desktop Menu */}
+          <div className="hidden md:block">
+            <div className="ml-10 flex items-baseline space-x-4">
+              {navLinks.map((link, index) => (
+                <NavLink
+                  key={index}
+                  to={link.path}
+                  className={({ isActive }) =>
+                    `text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-all duration-300 relative group ${
+                      isActive ? 'text-cyan-400' : ''
+                    }`
+                  }
+                >
+                  {link.title}
+                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-cyan-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out"></span>
+                </NavLink>
+              ))}
             </div>
           </div>
-        </div>
-      </nav>
 
-      {/* মোবাইল মেনু এবং অ্যানিমেশন */}
-      <div
-        className={`fixed top-0 left-0 w-full h-screen z-[99] bg-gray-900/95 backdrop-blur-sm transition-opacity duration-300 ease-in-out md:hidden
-        ${isMenuOpen ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-y-4 pt-20"> {/* pt-20 যোগ করা হয়েছে যাতে মেনু লিংগুলো navber এর নিচে থাকে */}
-          {navItems.map((item, index) => (
-            <NavLink
-              key={item.id}
-              to={item.path}
-              className={({ isActive }) => 
-                `flex items-center gap-4 w-4/5 max-w-sm justify-center text-gray-300 py-4 px-6 rounded-lg text-2xl font-semibold transition-all duration-300 transform
-                hover:bg-gray-700/50 hover:scale-105
-                ${isActive ? 'text-cyan-400' : ''}
-                ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`
-              }
-              // Cascade অ্যানিমেশনের জন্য ডিলে (delay)
-              style={{ transitionDelay: `${150 + index * 100}ms` }}
-              onClick={handleLinkClick}
+          {/* Hamburger Menu Icon for Mobile */}
+          <div className="-mr-2 flex md:hidden">
+            <button
+              onClick={toggleMenu}
+              type="button"
+              className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
             >
-              <div className="w-8 text-center">{item.icon}</div>
-              <span>{item.text}</span>
+              <span className="sr-only">Open main menu</span>
+              {isOpen ? <FiX className="block h-6 w-6" /> : <FiMenu className="block h-6 w-6" />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden transition-all duration-500 ease-in-out ${
+          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        } overflow-hidden`}
+        id="mobile-menu"
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {navLinks.map((link, index) => (
+            <NavLink
+              key={index}
+              to={link.path}
+              onClick={() => setIsOpen(false)} // লিঙ্কে ক্লিক করলে মেনু বন্ধ হয়ে যাবে
+              className={({ isActive }) =>
+                `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
+                  isActive ? 'bg-gray-900 text-cyan-400' : ''
+                }`
+              }
+            >
+              {link.title}
             </NavLink>
           ))}
         </div>
       </div>
-
-      {/* নেভিগেশন বারের জন্য অতিরিক্ত স্পেস (অন্যান্য কন্টেন্টকে নিচে নামানোর জন্য) */}
-      <div className="h-20 md:hidden"></div>
-      
-    </>
+    </nav>
   );
 }
 
-export default Navber;
+export default Navbar;
