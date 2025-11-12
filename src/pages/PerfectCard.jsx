@@ -8,10 +8,9 @@ function TechStack() {
             
             {/* ইমেজ / SVG (বাম পাশ) */}
             <div className='w-full md:w-1/2 mb-10 md:mb-0 flex justify-center'>
-                {/* unDraw বা Storyset থেকে Tech Stack সম্পর্কিত একটি ছবি যুক্ত করুন */}
                 <img 
-                    className='text-center w-full max-w-md md:max-w-full' 
-                    src="/assets/tech-stack-illustration.png" // নতুন ছবির পাথ
+                    className='text-center w-full max-w-lg md:max-w-full brightness-0 invert' 
+                    src="/assets/tech-stack-illustration.png" // আপনার ছবির পাথ
                     alt="Technology stack illustration" 
                 />
             </div>
