@@ -1,60 +1,59 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function Hiro() {
-    // টাইপিং অ্যানিমেশনের জন্য স্টেট
-    const [loopNum, setLoopNum] = useState(0);
-    const [isDeleting, setIsDeleting] = useState(false);
     const [text, setText] = useState('');
-    const [typingSpeed, setTypingSpeed] = useState(150); // টাইপিং স্পিড নিয়ন্ত্রণ করার জন্য
+    const loopNum = useRef(0);
+    const isDeleting = useRef(false);
+    const timeoutId = useRef(null);
 
-    // যে টেক্সটগুলো দেখানো হবে
     const toRotate = [
         "A Frontend Web Developer",
         "Specializing in React & JavaScript",
         "Building Modern Web Applications"
     ];
 
-    // টাইপিং এবং ডিলিট করার মূল লজিক
-    const handleType = useCallback(() => {
-        const i = loopNum % toRotate.length;
-        const fullText = toRotate[i];
-
-        // টেক্সট টাইপ বা ডিলিট করা হচ্ছে
-        setText(prevText => isDeleting ? fullText.substring(0, prevText.length - 1) : fullText.substring(0, prevText.length + 1));
-
-        // টাইপিং স্পিড পরিবর্তন
-        if (isDeleting) {
-            setTypingSpeed(75); // ডিলিট করার সময় দ্রুত
-        }
-
-        // যখন একটি শব্দ লেখা শেষ
-        if (!isDeleting && text === fullText) {
-            setIsDeleting(true);
-            setTypingSpeed(2000); // লেখা শেষে কিছুক্ষণ অপেক্ষা
-        } 
-        // যখন একটি শব্দ ডিলিট করা শেষ
-        else if (isDeleting && text === '') {
-            setIsDeleting(false);
-            setLoopNum(loopNum + 1);
-            setTypingSpeed(150); // নতুন শব্দ টাইপ করার স্বাভাবিক গতি
-        }
-    }, [loopNum, isDeleting, text]);
-
-
     useEffect(() => {
-        // একটি নির্দিষ্ট সময় পর পর handleType ফাংশন কল করা
-        const timer = setTimeout(() => {
-            handleType();
-        }, typingSpeed);
+        const handleType = () => {
+            const i = loopNum.current % toRotate.length;
+            const fullText = toRotate[i];
+            let newText = '';
 
-        // কম্পোনেন্ট আনমাউন্ট হলে টাইমার পরিষ্কার করা
-        return () => clearTimeout(timer);
-    }, [handleType, typingSpeed]);
+            if (isDeleting.current) {
+                newText = fullText.substring(0, text.length - 1);
+            } else {
+                newText = fullText.substring(0, text.length + 1);
+            }
+
+            setText(newText);
+
+            let typeSpeed = 150;
+
+            if (isDeleting.current) {
+                typeSpeed /= 2;
+            }
+
+            if (!isDeleting.current && newText === fullText) {
+                isDeleting.current = true;
+                typeSpeed = 2000; // Pause at the end of the word
+            } else if (isDeleting.current && newText === '') {
+                isDeleting.current = false;
+                loopNum.current += 1;
+                typeSpeed = 500;
+            }
+            
+            timeoutId.current = setTimeout(handleType, typeSpeed);
+        };
+        
+        // Start the animation
+        timeoutId.current = setTimeout(handleType, 500);
+
+        // Cleanup on component unmount
+        return () => clearTimeout(timeoutId.current);
+    }, [text]); // Note: Dependency is on 'text' to update on each character change, but refs manage the logic without re-rendering the whole tree.
 
 
     return (
         <>
-            {/* py-40 এবং min-h-screen ক্লাস পরিবর্তন করা হয়েছে */}
             <section className='flex justify-center items-center flex-col-reverse md:flex-row py-28 md:py-32'>
                 <div className='flex justify-center items-center md:items-start gap-12 md:justify-between flex-col-reverse md:flex-row w-full md:px-24'>
 
