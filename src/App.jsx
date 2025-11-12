@@ -14,7 +14,7 @@ function App() {
       <Navber />
 
       {/* এই সেকশনটি আপনার পেজের কন্টেন্টকে ধারণ করবে */}
-      <section className={`bg-gray-900 text-white bg-[url('bg.svg')] bg-no-repeat bg-cover w-full flex flex-col justify-center items-center`}>
+      <section className={`bg-gray-900 text-white bg-[url('bg.webp')] bg-no-repeat bg-cover w-full flex flex-col justify-center items-center`}>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Contact />} /> {/* বানানটি ঠিক করা হয়েছে */}
