@@ -1,57 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import { TypeAnimation } from 'react-type-animation';
 
 function Hiro() {
-    const [text, setText] = useState('');
-    const loopNum = useRef(0);
-    const isDeleting = useRef(false);
-    const timeoutId = useRef(null);
-
-    const toRotate = [
-        "A Frontend Web Developer",
-        "Specializing in React & JavaScript",
-        "Building Modern Web Applications"
-    ];
-
-    useEffect(() => {
-        const handleType = () => {
-            const i = loopNum.current % toRotate.length;
-            const fullText = toRotate[i];
-            let newText = '';
-
-            if (isDeleting.current) {
-                newText = fullText.substring(0, text.length - 1);
-            } else {
-                newText = fullText.substring(0, text.length + 1);
-            }
-
-            setText(newText);
-
-            let typeSpeed = 150;
-
-            if (isDeleting.current) {
-                typeSpeed /= 2;
-            }
-
-            if (!isDeleting.current && newText === fullText) {
-                isDeleting.current = true;
-                typeSpeed = 2000; // Pause at the end of the word
-            } else if (isDeleting.current && newText === '') {
-                isDeleting.current = false;
-                loopNum.current += 1;
-                typeSpeed = 500;
-            }
-            
-            timeoutId.current = setTimeout(handleType, typeSpeed);
-        };
-        
-        // Start the animation
-        timeoutId.current = setTimeout(handleType, 500);
-
-        // Cleanup on component unmount
-        return () => clearTimeout(timeoutId.current);
-    }, [text]); // Note: Dependency is on 'text' to update on each character change, but refs manage the logic without re-rendering the whole tree.
-
-
     return (
         <>
             <section className='flex justify-center items-center flex-col-reverse md:flex-row py-28 md:py-32'>
@@ -61,11 +11,23 @@ function Hiro() {
                         <div className='text-center md:text-start px-5 flex flex-col gap-3 md:gap-4' >
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Nahid</span></h2>
 
-                            {/* টাইপিং অ্যানিমেশন এখানে দেখানো হবে */}
-                            <p className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 max-w-xl h-16 md:h-auto">
-                                <span className="wrap">{text}</span>
-                                <span className="border-r-4 border-blue-400 animate-pulse"></span>
-                            </p>
+                            {/* উন্নত টাইপিং অ্যানিমেশন */}
+                            <div className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 max-w-xl h-16 md:h-auto">
+                                <TypeAnimation
+                                    sequence={[
+                                        'A Frontend Web Developer',
+                                        1000,
+                                        'Specializing in React & JavaScript',
+                                        1000,
+                                        'Building Modern Web Applications',
+                                        1000,
+                                    ]}
+                                    wrapper="span"
+                                    speed={50}
+                                    style={{ display: 'inline-block' }}
+                                    repeat={Infinity}
+                                />
+                            </div>
 
                             <p className="text-gray-400 max-w-md mb-6 ">
                                 I create modern, responsive and user-friendly web applications using React.js, Next.js, Tailwind CSS, Bootstrap, Material Ui, Hiro Ui, More... Passionate about clean code and great user experiences.
@@ -100,7 +62,8 @@ function Hiro() {
 
                     <div className='px-5 flex-shrink-0'>
                         <div className='flex items-center justify-center'>
-                            <div className={`bg-[url("/myimg.jpg")] h-72 w-72 md:h-96 md:w-96 rounded-full bg-no-repeat bg-center bg-cover border-4 border-blue-400 shadow-2xl`}>
+                            {/* ইমেজে হোভার এফেক্ট যোগ করা হয়েছে */}
+                            <div className={`bg-[url("/myimg.jpg")] h-72 w-72 md:h-96 md:w-96 rounded-full bg-no-repeat bg-center bg-cover border-4 border-blue-400 shadow-2xl transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-blue-500/50`}>
                             </div>
                          </div>
                     </div>
