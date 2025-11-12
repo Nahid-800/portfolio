@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 
-function Navbar() {
+function Navber() { // আপনার কম্পোনেন্টের নাম অনুযায়ী 'Navber'
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -36,22 +36,18 @@ function Navbar() {
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out ${
         scrolled
-          ? 'bg-gray-900/70 backdrop-blur-2xl shadow-lg' // স্ক্রল করার পর (বেশি ব্লার)
-          : 'bg-gray-900/50 backdrop-blur-xl'           // একদম উপরে থাকলে (মাঝারি ব্লার)
+          ? 'bg-gray-900/80 backdrop-blur-2xl shadow-lg' // স্ক্রল করার পর
+          : 'bg-gray-900 shadow-md'                   // একদম উপরে থাকা অবস্থায়
       }`}
     >
-      {/* 
-        এখানে মূল পরিবর্তনটি করা হয়েছে। 
-        'px-4' কে 'px-2' করা হয়েছে যাতে মোবাইল স্ক্রিনে দুই পাশের গ্যাপ কমে যায়।
-      */}
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo and Portfolio Name */}
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center gap-3">
-              <img className="h-12 w-12 rounded-full object-cover" src="/logo2.jpg" alt="Logo" />
+              <img className="h-12 w-12 rounded-full object-cover" src="/nevlogo.jpegg" alt="Logo" />
               <span className="text-white text-2xl font-bold transition-colors duration-300 hover:text-cyan-400">
                Creative Hub
               </span>
@@ -79,11 +75,11 @@ function Navbar() {
           </div>
 
           {/* Hamburger Menu Icon for Mobile */}
-          <div className="-mr-2 flex md:hidden">
+          <div className="flex md:hidden">
             <button
               onClick={toggleMenu}
               type="button"
-              className="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none"
               aria-controls="mobile-menu"
               aria-expanded="false"
             >
@@ -122,4 +118,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default Navber;
