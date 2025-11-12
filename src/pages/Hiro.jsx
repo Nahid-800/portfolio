@@ -98,7 +98,12 @@ function Hiro() {
                   - 'order-1' দিয়ে মোবাইলে এটিকে প্রথমে (উপরে) দেখানো হয়েছে।
                   - 'md:order-2' দিয়ে ডেস্কটপে এটিকে দ্বিতীয়তে (ডানে) দেখানো হয়েছে।
                 */}
-                <div className='flex-1 flex justify-center items-center order-1 md:order-2'>
+                {/* 
+                  এখানে '-mt-12 md:mt-0' যোগ করা হয়েছে।
+                  - '-mt-12' ক্লাসটি মোবাইল স্ক্রিনে ছবিটিকে উপরে তুলবে।
+                  - 'md:mt-0' ডেস্কটপ স্ক্রিনে এই পরিবর্তনটি নিষ্ক্রিয় রাখবে।
+                */}
+                <div className='flex-1 flex justify-center items-center order-1 md:order-2 -mt-12 md:mt-0'>
                     {/* 
                       রেসপন্সিভ ইমেজ সাইজ:
                       - ছোট স্ক্রিনে: h-64 w-64
