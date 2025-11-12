@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 
-function Navber() { // আপনার কম্পোনেন্টের নাম অনুযায়ী 'Navber'
+function Navber() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -48,7 +48,8 @@ function Navber() { // আপনার কম্পোনেন্টের ন�
           <div className="flex-shrink-0">
             <Link to="/" className="flex items-center gap-3">
               <img className="h-12 w-12 rounded-full object-cover" src="/nevlogo.jpeg" alt="Logo" />
-              <span className="text-white text-2xl font-bold transition-colors duration-300 hover:text-cyan-400">
+              {/* ফন্ট এবং সাইজ আপডেট করা হয়েছে */}
+              <span className="text-white text-xl sm:text-2xl font-bold transition-colors duration-300 hover:text-cyan-400 font-poppins">
                Creative Hub
               </span>
             </Link>
@@ -90,11 +91,11 @@ function Navber() { // আপনার কম্পোনেন্টের ন�
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu (Updated for better animation and positioning) */}
       <div
-        className={`md:hidden transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        } overflow-hidden`}
+        className={`md:hidden absolute w-full bg-gray-900 transition-all duration-300 ease-in-out ${
+          isOpen ? 'top-20 opacity-100' : '-top-96 opacity-0'
+        }`}
         id="mobile-menu"
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
@@ -102,10 +103,10 @@ function Navber() { // আপনার কম্পোনেন্টের ন�
             <NavLink
               key={index}
               to={link.path}
-              onClick={() => setIsOpen(false)}
+              onClick={() => setIsOpen(false)} // লিঙ্কে ক্লিক করলে মেনু বন্ধ হয়ে যাবে
               className={({ isActive }) =>
                 `text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${
-                  isActive ? 'bg-gray-900 text-cyan-400' : ''
+                  isActive ? 'bg-gray-800 text-cyan-400' : ''
                 }`
               }
             >
