@@ -93,7 +93,7 @@ function Hiro() {
                                 <div className={`bg-slate-900 p-1 rounded-full`}>
                                     {/* এখানে background image এর পরিবর্তে img ট্যাগ ব্যবহার করা হয়েছে */}
                                     <img 
-                                        src="/person.png" 
+                                        src="/person.webp" 
                                         alt="Nahid" 
                                         className="h-72 w-72 md:h-96 md:w-96 rounded-full object-cover 
                                                    transition-transform duration-300 ease-in-out 
