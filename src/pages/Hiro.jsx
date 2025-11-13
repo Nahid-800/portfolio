@@ -94,29 +94,27 @@ function Hiro() {
                     </div>
                 </div>
 
-                {/* === ইমেজ সেকশন (নতুন অ্যানিমেশনসহ) === */}
+                {/* === ইমেজ সেকশন (গ্রেডিয়েন্ট বর্ডার এবং নতুন অ্যানিমেশনসহ) === */}
                 {/* 
                   - 'order-1' দিয়ে মোবাইলে এটিকে প্রথমে (উপরে) দেখানো হয়েছে।
                   - 'md:order-2' দিয়ে ডেস্কটপে এটিকে দ্বিতীয়তে (ডানে) দেখানো হয়েছে।
                 */}
                 <div className='flex-1 flex justify-center items-center order-1 md:order-2 -mt-20 md:mt-0'>
                     {/*
-                      ফ্রেম বা গোলাকার বক্স:
-                      - 'group' ক্লাসটি হোভার ইফেক্টের জন্য জরুরি।
-                      - বর্ডার এবং বাইরের শ্যাডো এখানে দেওয়া হয়েছে।
-                      - হোভার করলে শ্যাডো আরও আকর্ষণীয় হবে।
-                      - 'relative' পজিশন ভিতরের ছবিকে নিয়ন্ত্রণ করার জন্য।
+                      গ্রেডিয়েন্ট বর্ডার কন্টেইনার:
+                      - এখানে `border` এর পরিবর্তে `bg-gradient-to-r` এবং `p-1` ব্যবহার করা হয়েছে।
+                      - এই `p-1` (প্যাডিং) বর্ডারের মতো কাজ করবে।
                     */}
-                    <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full border-4 border-blue-400 shadow-2xl transition-all duration-300 ease-in-out hover:shadow-blue-500/50">
+                    <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-1 shadow-2xl transition-all duration-300 ease-in-out hover:shadow-cyan-500/50">
                         {/*
                           আসল ইমেজ:
-                          - এটি ফ্রেমের ভিতরে থাকবে এবং ফ্রেমের মাপে হবে।
-                          - 'group-hover' এর মাধ্যমে ফ্রেমের উপর হোভার করলে এই ছবিটি বড় (scale) হবে।
-                          - ফলে মনে হবে ছবিটি বক্স থেকে বেরিয়ে আসছে।
-                          - ট্রানজিশন অ্যানিমেশনকে মসৃণ করে।
+                          - এর ব্যাকগ্রাউন্ডে আপনার ওয়েবসাইটের মূল ব্যাকগ্রাউন্ড কালার দিন। 
+                          - এখানে উদাহরণ হিসেবে `bg-gray-900` দেওয়া হলো।
+                          - এর ব্যাকগ্রাউন্ডেই আপনার ছবিটি (`bg-[url('/myimg.webp')]`) থাকবে।
+                          - হোভার করলে এটি বড় হবে।
                         */}
                         <div
-                            className="h-full w-full rounded-full bg-[url('/myimg.webp')] bg-no-repeat bg-center bg-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
+                            className="h-full w-full rounded-full bg-gray-900 bg-[url('/myimg.webp')] bg-no-repeat bg-center bg-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
                         >
                         </div>
                     </div>
