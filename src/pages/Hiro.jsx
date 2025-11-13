@@ -3,14 +3,14 @@ import { TypeAnimation } from 'react-type-animation';
 
 function Hiro() {
     return (
-        // সমাধান ৩: সেকশনের ভার্টিক্যাল পজিশন নিয়ন্ত্রণের জন্য নির্দিষ্ট প্যাডিং ব্যবহার করা হয়েছে।
-        <section className='pt-24 pb-20 md:pt-36 md:pb-28 px-4'>
+        // সমাধান ২: সেকশনকে পুরো স্ক্রিন জুড়ে দেখানোর জন্য এবং কন্টেন্টকে ভার্টিক্যালি সেন্টারে আনার জন্য কোড।
+        <section className='min-h-screen flex items-center px-4'>
             <div className='container mx-auto flex flex-col md:flex-row items-center justify-center gap-10 md:gap-8'>
 
                 {/* === টেক্সট কন্টেন্ট সেকশন === */}
-                {/* সমাধান ২: টেক্সট যেন বেশি বামে না যায় সেজন্য প্রস্থ (w-1/2) এবং অ্যালাইনমেন্ট ঠিক করা হয়েছে। */}
-                <div className='w-full md:w-1/2 order-2 md:order-1 flex flex-col items-center md:items-end'>
-                    <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4 max-w-xl'>
+                {/* সমাধান ১: টেক্সট ব্লকের অ্যালাইনমেন্ট ঠিক করা হয়েছে, এখন এটি আর বেশি ডানে যাবে না। */}
+                <div className='flex-1 order-2 md:order-1'>
+                    <div className='text-center md:text-start flex flex-col items-center md:items-start gap-3 md:gap-4'>
                         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">Hi, I'm <span className="text-blue-400">Nahid</span></h2>
 
                         <div className="text-lg md:text-2xl lg:text-3xl font-[500] mt-2 h-16 md:h-auto">
@@ -78,20 +78,18 @@ function Hiro() {
                     </div>
                 </div>
 
-                {/* === ইমেজ সেকশন === */}
-                <div className='w-full md:w-1/2 flex justify-center md:justify-start items-center order-1 md:order-2'>
+                {/* === ইমেজ সেকশন (এটি এখন ঠিক আছে) === */}
+                <div className='flex-1 flex justify-center items-center order-1 md:order-2'>
                     <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96">
                         
-                        {/* সমাধান ১: ইমেজকে ডিফল্টভাবে উপরে তোলার জন্য translate-y-5 ব্যবহার করা হয়েছে। */}
                         <img 
-                            src="/person.png" // <-- আপনার PNG ছবির পাথ
+                            src="/person.png"
                             alt="Nahid's Picture" 
                             className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full object-contain transition-transform duration-500 ease-in-out z-10 
                                        transform translate-y-5 
                                        group-hover:scale-110 group-hover:-translate-y-12"
                         />
 
-                        {/* গোলাকার গ্রেডিয়েন্ট ফ্রেম */}
                         <div className="h-full w-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-1 shadow-2xl transition-all duration-300 ease-in-out group-hover:shadow-cyan-500/50">
                             <div className="h-full w-full rounded-full bg-gray-900"></div>
                         </div>
