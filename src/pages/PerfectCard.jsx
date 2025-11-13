@@ -27,7 +27,7 @@ function TechStack() {
                 </p>
                <div className='text-center md:text-start'>
                  <a 
-                    href="#contact" 
+                    href="/contact" 
                     className="inline-flex items-center px-6 py-3 font-semibold bg-transparent border-2 border-gray-500 rounded-full text-white transition-colors duration-300 hover:bg-gray-700 hover:border-gray-700"
                  >
                     <i className="fa-solid fa-code mr-3"></i>

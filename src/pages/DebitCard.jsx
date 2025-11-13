@@ -16,7 +16,7 @@ function FeaturedProject() {
                 </p>
                 <div className='flex justify-center md:justify-start mt-4'>
                      <a 
-                        href="YOUR_GITHUB_REPO_LINK_HERE" // এখানে আপনার গিটহাব রিপোজিটরির লিংক দিন
+                        href="https://github.com/NahidAhmed-12/portfolio.git" // এখানে আপনার গিটহাব রিপোজিটরির লিংক দিন
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className='bg-[#772AB3] hover:bg-purple-800 transition-colors duration-300 text-white font-bold py-3 px-6 rounded-full inline-flex items-center'
