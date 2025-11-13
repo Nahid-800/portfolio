@@ -94,29 +94,35 @@ function Hiro() {
                     </div>
                 </div>
 
-                {/* === ইমেজ সেকশন (গ্রেডিয়েন্ট বর্ডার এবং নতুন অ্যানিমেশনসহ) === */}
-                {/* 
-                  - 'order-1' দিয়ে মোবাইলে এটিকে প্রথমে (উপরে) দেখানো হয়েছে।
-                  - 'md:order-2' দিয়ে ডেস্কটপে এটিকে দ্বিতীয়তে (ডানে) দেখানো হয়েছে।
-                */}
+                {/* === ইমেজ সেকশন (PNG ইমেজ পপ-আউট অ্যানিমেশনসহ) === */}
                 <div className='flex-1 flex justify-center items-center order-1 md:order-2 -mt-20 md:mt-0'>
                     {/*
-                      গ্রেডিয়েন্ট বর্ডার কন্টেইনার:
-                      - এখানে `border` এর পরিবর্তে `bg-gradient-to-r` এবং `p-1` ব্যবহার করা হয়েছে।
-                      - এই `p-1` (প্যাডিং) বর্ডারের মতো কাজ করবে।
+                      মূল কন্টেইনার:
+                      - 'group' হোভার ইফেক্টের জন্য।
+                      - 'relative' ভিতরের ইমেজটিকে পজিশন করার জন্য।
                     */}
-                    <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-1 shadow-2xl transition-all duration-300 ease-in-out hover:shadow-cyan-500/50">
-                        {/*
-                          আসল ইমেজ:
-                          - এর ব্যাকগ্রাউন্ডে আপনার ওয়েবসাইটের মূল ব্যাকগ্রাউন্ড কালার দিন। 
-                          - এখানে উদাহরণ হিসেবে `bg-gray-900` দেওয়া হলো।
-                          - এর ব্যাকগ্রাউন্ডেই আপনার ছবিটি (`bg-[url('/myimg.webp')]`) থাকবে।
-                          - হোভার করলে এটি বড় হবে।
+                    <div className="group relative h-64 w-64 md:h-80 md:w-80 lg:h-96 lg:w-96">
+                        
+                        {/* PNG ইমেজ (মানুষ) */}
+                        {/* 
+                          - `absolute` দিয়ে এটিকে কন্টেইনারের সাপেক্ষে পজিশন করা হয়েছে।
+                          - `bottom-0` এটিকে নিচে বসিয়েছে।
+                          - `z-10` এটিকে গোলাকার ফ্রেমের উপরে রাখবে।
+                          - `group-hover:scale-110` হোভারে ছবিটিকে বড় করবে।
+                          - `group-hover:-translate-y-4` হোভারে ছবিটিকে সামান্য উপরে তুলবে।
                         */}
-                        <div
-                            className="h-full w-full rounded-full bg-gray-900 bg-[url('/myimg.webp')] bg-no-repeat bg-center bg-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
-                        >
+                        <img 
+                            src="/person.png" // <-- এখানে আপনার PNG ছবির পাথ দিন
+                            alt="Nahid's Picture" 
+                            className="absolute bottom-0 left-1/2 -translate-x-1/2 h-full w-auto object-contain transition-transform duration-300 ease-in-out z-10 group-hover:scale-110 group-hover:-translate-y-4"
+                        />
+
+                        {/* গোলাকার গ্রেডিয়েন্ট ফ্রেম (এটি ছবির পিছনে থাকবে) */}
+                        <div className="h-full w-full rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 p-1 shadow-2xl transition-all duration-300 ease-in-out group-hover:shadow-cyan-500/50">
+                            {/* ভিতরের সার্কেল (ওয়েবসাইটের ব্যাকগ্রাউন্ড কালার) */}
+                            <div className="h-full w-full rounded-full bg-gray-900"></div>
                         </div>
+
                     </div>
                 </div>
 
