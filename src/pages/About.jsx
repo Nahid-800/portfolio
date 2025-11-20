@@ -3,14 +3,14 @@ import React from 'react'
 function About() {
   return (
     // পরিবর্তন: 
-    // আগে 'py-20' ছিল যা উপরে-নিচে অনেক জায়গা নিচ্ছিল।
-    // এখন 'pt-10' (উপরে কম জায়গা) এবং 'pb-20' (নিচে ঠিকঠাক জায়গা) করা হয়েছে।
-    // যদি আরও উপরে উঠাতে চান, 'pt-10' এর বদলে 'pt-5' ব্যবহার করতে পারেন।
-    <section id="about" className="pt-10 pb-20 md:pt-16 bg-transparent text-white">
+    // আগে 'pt-10' ছিল, এখন 'pt-0' করা হয়েছে যাতে সেকশনটি একদম উপরে উঠে আসে।
+    // 'pb-20' রাখা হয়েছে যাতে নিচের দিকে ফাঁকা জায়গা ঠিক থাকে।
+    <section id="about" className="pt-0 pb-20 bg-transparent text-white">
       <div className="container mx-auto px-6 md:px-12">
         
         {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
+        {/* mt-10 যোগ করা হয়েছে যাতে একদম লেগে না গিয়ে সামান্য একটু গ্যাপ থাকে, প্রয়োজনে এটিও কমিয়ে mt-5 করতে পারেন */}
+        <div className="text-center mb-12 md:mb-16 mt-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white uppercase tracking-wide">
             About <span className="text-blue-500">Me</span>
           </h2>
@@ -81,4 +81,4 @@ function About() {
   )
 }
 
-export default About
+export default AboutAbout
