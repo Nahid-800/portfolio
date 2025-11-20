@@ -86,12 +86,14 @@ function Hero() {
 
                     <div className='px-5 flex-shrink-0'>
                         <div className='flex items-center justify-center'>
-                            {/* Gradient Border Div */}
-                            <div className="p-1 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500
+                            {/* 
+                                পরিবর্তন: আগে এখানে bg-gradient-to-r ছিল যা নীল রঙ তৈরি করছিল।
+                                এখন সেটি সরিয়ে border-4 border-cyan-500 দেওয়া হয়েছে যাতে মাঝখানটা স্বচ্ছ থাকে।
+                            */}
+                            <div className="p-1 rounded-full border-4 border-cyan-500
                                             shadow-2xl transition-transform duration-300 ease-in-out
                                             hover:scale-105 hover:shadow-blue-500/50 group">
-                                <div className={`bg-slate-900 p-1 rounded-full`}>
-                                    {/* এখানে background image এর পরিবর্তে img ট্যাগ ব্যবহার করা হয়েছে */}
+                                <div className={`bg-transparent p-1 rounded-full`}>
                                     <img 
                                         src="/person.webp" 
                                         alt="Nahid" 

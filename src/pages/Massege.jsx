@@ -69,10 +69,12 @@ function Massege() {
   // NOTE: handleKeyDown ফাংশনটি সরিয়ে দেওয়া হয়েছে যাতে Enter চাপলে নতুন লাইন তৈরি হয়।
 
   return (
-    <div className="fixed top-[80px] left-0 w-full h-[calc(100dvh-80px)] flex flex-col font-sans bg-[#0f172a] z-0">
+    // পরিবর্তন: bg-[#0f172a] কে bg-transparent করা হয়েছে
+    <div className="fixed top-[80px] left-0 w-full h-[calc(100dvh-80px)] flex flex-col font-sans bg-transparent z-0">
       
       {/* HEADER */}
-      <div className="px-5 py-3 flex items-center gap-4 border-b border-white/5 bg-slate-900/60 backdrop-blur-xl flex-shrink-0 shadow-sm z-10">
+      {/* পরিবর্তন: bg-slate-900/60 কে bg-transparent করা হয়েছে */}
+      <div className="px-5 py-3 flex items-center gap-4 border-b border-white/5 bg-transparent backdrop-blur-xl flex-shrink-0 shadow-sm z-10">
         <div className="relative group cursor-pointer">
           <div className="p-[2px] rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500">
             <img 
@@ -94,7 +96,8 @@ function Massege() {
       </div>
 
       {/* CHAT BODY */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-5 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent bg-gradient-to-b from-slate-900 to-[#0B1121]">
+      {/* পরিবর্তন: bg-gradient-to-b from-slate-900 to-[#0B1121] সরিয়ে দেওয়া হয়েছে */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-5 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent bg-transparent">
         
         <div className="flex justify-center mb-2">
             <span className="text-[10px] text-slate-500 bg-slate-800/50 px-3 py-1 rounded-full">Today</span>
@@ -133,9 +136,10 @@ function Massege() {
       </div>
 
       {/* INPUT AREA */}
+      {/* পরিবর্তন: bg-[#0B1121]/95 কে bg-transparent করা হয়েছে */}
       <form 
         onSubmit={handleSend} 
-        className="p-3 pb-4 bg-[#0B1121]/95 backdrop-blur-md border-t border-white/5 flex items-end gap-3 flex-shrink-0 w-full"
+        className="p-3 pb-4 bg-transparent backdrop-blur-md border-t border-white/5 flex items-end gap-3 flex-shrink-0 w-full"
       >
         {/* Text Area Wrapper */}
         <div className="flex-1 bg-slate-800/60 rounded-[24px] border border-slate-700/50 hover:border-slate-600 focus-within:border-blue-500/50 focus-within:bg-slate-800 transition-all duration-300">
