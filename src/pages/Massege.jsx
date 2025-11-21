@@ -61,8 +61,6 @@ function Message() {
 
   return (
     // ============ MAIN CONTAINER ============
-    // পরিবর্তন: 'z-50' কে 'z-0' করা হয়েছে।
-    // এখন আপনার Navbar (যদি z-50 বা তার বেশি থাকে) এই সেকশনের উপরে থাকবে।
     <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-transparent z-0 overflow-hidden">
       
       {/* --- Floating Background Effects --- */}
@@ -71,7 +69,6 @@ function Message() {
 
       {/* ============ HEADER ============ */}
       <div className="flex-none h-[70px] px-5 flex items-center gap-4 border-b border-white/10 bg-neutral-900/70 backdrop-blur-md shadow-sm z-20 w-full">
-        
         <div className="relative group cursor-pointer">
           <div className="p-[2px] rounded-full bg-gradient-to-tr from-cyan-400 to-blue-600">
             <img 
@@ -82,7 +79,6 @@ function Message() {
           </div>
           <span className="absolute bottom-0.5 right-0.5 w-3 h-3 bg-emerald-500 border-2 border-neutral-900 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.8)] animate-pulse"></span>
         </div>
-        
         <div className="flex-1">
           <h2 className="text-white font-bold text-lg leading-tight tracking-wide">Nahid</h2>
           <p className="text-cyan-200/80 text-xs font-medium flex items-center gap-1.5">
@@ -92,10 +88,10 @@ function Message() {
       </div>
 
       {/* ============ CHAT BODY ============ */}
-      <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-6 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent z-10 overscroll-contain">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-4 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent z-10 overscroll-contain">
         
-        <div className="flex justify-center mb-4">
-            <span className="text-[10px] font-semibold text-gray-300 bg-neutral-900/40 backdrop-blur-sm border border-white/10 px-3 py-1 rounded-full shadow-sm">
+        <div className="flex justify-center mb-6">
+            <span className="text-[10px] font-semibold text-gray-400 bg-neutral-900/40 backdrop-blur-sm border border-white/5 px-3 py-1 rounded-full shadow-sm">
               Today
             </span>
         </div>
@@ -105,28 +101,42 @@ function Message() {
             key={msg.id}
             className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
           >
+            {/* 
+               === মেসেজ বাবল ডিজাইন আপডেট ===
+               ১. max-w-[75%] করা হয়েছে যাতে বেশি চওড়া না দেখায়।
+               ২. rounded-[20px] এবং rounded-br/bl-[2px] ব্যবহার করে 'Message Tail' ইফেক্ট দেওয়া হয়েছে।
+               ৩. প্যাডিং কমিয়ে px-4 py-2.5 করা হয়েছে (স্লিম লুক)।
+            */}
             <div
-              className={`relative max-w-[85%] md:max-w-[65%] px-5 py-3.5 rounded-2xl text-[15px] shadow-lg whitespace-pre-wrap leading-relaxed border backdrop-blur-md
+              className={`relative max-w-[75%] px-4 py-2.5 text-[15px] shadow-sm whitespace-pre-wrap leading-relaxed border backdrop-blur-md
               ${
                 msg.sender === 'user'
-                  ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-br-none border-transparent shadow-cyan-500/10'
-                  : 'bg-neutral-900/80 text-gray-200 rounded-bl-none border-neutral-700 shadow-black/20'
+                  // ইউজারের মেসেজ: ভাইব্রেন্ট গ্রেডিয়েন্ট, ডানদিকের কোণা শার্প
+                  ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white rounded-[20px] rounded-br-[2px] border-transparent shadow-cyan-500/20'
+                  // নাহিদের মেসেজ: ডার্ক গ্রে, বামদিকের কোণা শার্প
+                  : 'bg-neutral-800 text-gray-200 rounded-[20px] rounded-bl-[2px] border-neutral-700 shadow-black/20'
               }`}
             >
               <p>{msg.text}</p>
-              <span className={`text-[10px] block text-right mt-2 ${msg.sender === 'user' ? 'text-blue-100' : 'text-gray-400'}`}>
+              
+              {/* টাইমস্ট্যাম্প ডিজাইন আপডেট */}
+              <div className={`text-[10px] flex items-center justify-end gap-1 mt-1 opacity-70`}>
                 {msg.time}
-              </span>
+                {/* ইউজারের মেসেজে ডাবল টিক আইকন */}
+                {msg.sender === 'user' && (
+                  <i className="fa-solid fa-check-double text-[10px]"></i>
+                )}
+              </div>
             </div>
           </div>
         ))}
 
         {isTyping && (
           <div className="flex justify-start animate-fade-in">
-             <div className="bg-neutral-900/80 backdrop-blur-sm border border-neutral-700 px-4 py-4 rounded-2xl rounded-bl-none flex items-center gap-1.5 h-12 shadow-md">
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce"></span>
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce delay-100"></span>
-              <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce delay-200"></span>
+             <div className="bg-neutral-800 border border-neutral-700 px-4 py-3 rounded-[20px] rounded-bl-[2px] flex items-center gap-1.5 h-auto shadow-sm">
+              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"></span>
+              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-100"></span>
+              <span className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce delay-200"></span>
             </div>
           </div>
         )}
@@ -136,24 +146,25 @@ function Message() {
       {/* ============ INPUT AREA ============ */}
       <form 
         onSubmit={handleSend} 
-        className="flex-none p-4 bg-neutral-900/70 backdrop-blur-md border-t border-white/10 flex items-end gap-3 w-full z-20"
+        className="flex-none p-3 bg-neutral-900/70 backdrop-blur-md border-t border-white/10 flex items-end gap-2 w-full z-20"
       >
-        <div className="flex-1 bg-neutral-800/50 rounded-[24px] border border-neutral-700 transition-all duration-300 focus-within:border-cyan-500/50 focus-within:bg-neutral-900/80 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+        {/* ইনপুট ফিল্ড আরও রাউন্ডেড এবং স্লিম করা হয়েছে */}
+        <div className="flex-1 bg-neutral-800/50 rounded-full border border-neutral-700 transition-all duration-300 focus-within:border-cyan-500/50 focus-within:bg-neutral-900/80 focus-within:shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             <textarea
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type a message..."
                 rows={1}
-                className="w-full bg-transparent text-white placeholder-gray-400 px-5 py-3.5 rounded-[24px] focus:outline-none text-[15px] resize-none max-h-[120px] overflow-y-auto scrollbar-hide"
-                style={{ minHeight: '50px' }}
+                className="w-full bg-transparent text-white placeholder-gray-400 px-5 py-3 rounded-full focus:outline-none text-[15px] resize-none max-h-[100px] overflow-y-auto scrollbar-hide flex items-center"
+                style={{ minHeight: '46px', paddingTop: '10px' }}
             />
         </div>
         
         <button
           type="submit"
           disabled={!input.trim()}
-          className={`p-3 rounded-full shadow-lg transition-all duration-300 transform flex items-center justify-center h-[50px] w-[50px] flex-shrink-0
+          className={`p-2 rounded-full shadow-lg transition-all duration-300 transform flex items-center justify-center h-[46px] w-[46px] flex-shrink-0
             ${input.trim() 
                 ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:scale-105 active:scale-95 shadow-cyan-500/30' 
                 : 'bg-neutral-800/80 text-gray-500 cursor-not-allowed'
