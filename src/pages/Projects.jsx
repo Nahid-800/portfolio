@@ -18,7 +18,7 @@ function Projects() {
             description: "A clean, responsive, and dark-themed personal portfolio website template for developers.",
             image: "public/Images/crypto-10.vercel.app_(Nest Hub Max) (1).png",
             techStack: ["React.js", "API", "Tailwind "],
-            liveLink: "#",
+            liveLink: "https://crypto-10.vercel.app/",
             codeLink: "#"
         },
         {
@@ -27,7 +27,7 @@ function Projects() {
             description: "Real-time weather forecasting app fetching data from OpenWeatherMap API with location support.",
             image: "public/Images/weathers-10.vercel.app_(Nest Hub Max) (4) (1).png",
             techStack: ["JavaScript", "API", "Tailwind"],
-            liveLink: "#",
+            liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"
         }
     ];
