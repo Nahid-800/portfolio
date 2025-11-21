@@ -2,126 +2,138 @@ import React from 'react';
 
 function Contact() {
   return (
-    <section id="contact" className="w-full pt-0 pb-20 bg-transparent text-white overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" className="py-16 md:py-24 relative overflow-hidden">
+      
+      {/* --- Background Glow (Consistency বজায় রাখার জন্য) --- */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl -z-10"></div>
+
+      <div className="max-w-6xl mx-auto px-5 md:px-12 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          {/* হেডিং: Contact সাদা, Me ঘন নীল */}
-          <h2 className="text-3xl md:text-4xl font-bold text-white inline-block relative">
-            Contact <span className="text-blue-500">Me</span>
-            
-            {/* আন্ডারলাইন: এখন আরও ঘন নীল গ্র্যাডিয়েন্ট */}
-            <span className="block w-full h-1 bg-gradient-to-r from-blue-600 to-blue-800 mt-2 rounded-full opacity-90"></span>
+        {/* --- Section Header --- */}
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-white uppercase tracking-wide">
+            Contact <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Me</span>
           </h2>
-          
-          <p className="text-white mt-4 text-lg opacity-90">
-            Let's bring your ideas to life. Get in touch today!
+          <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-3 rounded-full"></div>
+          <p className="text-gray-400 mt-4 text-base md:text-lg max-w-2xl mx-auto">
+            Let's bring your ideas to life. Whether you have a project in mind or just want to say hi, feel free to reach out!
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16">
           
-          {/* Left Side: Contact Info */}
-          <div className="flex flex-col justify-between p-8 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl hover:border-blue-500/30 transition-all duration-300">
+          {/* --- Left Side: Contact Info --- */}
+          <div className="flex flex-col justify-between space-y-8">
+            
             <div>
-              <h3 className="text-3xl font-bold text-white">Nahid</h3>
-              {/* পদবী: ঘন নীল কালার */}
-              <p className="text-blue-500 text-xl font-medium mt-2">Frontend Developer</p>
-              
-              <p className="text-gray-100 mt-4 leading-relaxed">
-                I specialize in building modern, responsive, and user-friendly web interfaces. Whether you have a project in mind or just want to say hi, feel free to reach out.
-              </p>
+                <h3 className="text-2xl font-bold text-white mb-2">Let's Talk</h3>
+                <p className="text-gray-400 leading-relaxed mb-8">
+                    I'm open for freelance projects or full-time opportunities. Connect with me via email or call directly.
+                </p>
             </div>
 
-            {/* Contact Details */}
-            <div className="mt-10 space-y-6">
-              {/* Email */}
-              <div className="flex items-center space-x-4 group cursor-pointer">
-                <div className="p-3 rounded-full bg-white/10 group-hover:bg-blue-600/20 transition-colors">
-                  {/* আইকন কালার ঘন নীল */}
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
+            {/* Contact Details Cards */}
+            <div className="space-y-6">
+              
+              {/* Email Card */}
+              <div className="flex items-center gap-5 p-5 rounded-xl bg-neutral-800/50 border border-neutral-700 hover:border-cyan-500/50 transition-all duration-300 group">
+                <div className="h-12 w-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-cyan-400 group-hover:text-white group-hover:bg-cyan-500 transition-all duration-300">
+                   <i className="fa-solid fa-envelope text-xl"></i>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-200">Email Me</p>
-                  <p className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">nahid@example.com</p>
+                  <p className="text-sm text-gray-400 font-medium">Email Me</p>
+                  <h4 className="text-lg md:text-xl font-semibold text-white">nahid@example.com</h4>
                 </div>
               </div>
 
-              {/* Phone */}
-              <div className="flex items-center space-x-4 group cursor-pointer">
-                <div className="p-3 rounded-full bg-white/10 group-hover:bg-blue-600/20 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
+              {/* Phone Card */}
+              <div className="flex items-center gap-5 p-5 rounded-xl bg-neutral-800/50 border border-neutral-700 hover:border-blue-500/50 transition-all duration-300 group">
+                <div className="h-12 w-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-blue-400 group-hover:text-white group-hover:bg-blue-500 transition-all duration-300">
+                    <i className="fa-solid fa-phone text-xl"></i>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-200">Call Me</p>
-                  <p className="text-lg font-medium text-white group-hover:text-blue-400 transition-colors">+880 1234 567890</p>
+                  <p className="text-sm text-gray-400 font-medium">Call Me</p>
+                  <h4 className="text-lg md:text-xl font-semibold text-white">+880 1234 567890</h4>
                 </div>
               </div>
 
-              {/* Location */}
-              <div className="flex items-center space-x-4 group">
-                <div className="p-3 rounded-full bg-white/10 group-hover:bg-blue-600/20 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
+              {/* Location Card */}
+              <div className="flex items-center gap-5 p-5 rounded-xl bg-neutral-800/50 border border-neutral-700 hover:border-teal-500/50 transition-all duration-300 group">
+                <div className="h-12 w-12 rounded-full bg-neutral-900 border border-neutral-700 flex items-center justify-center text-teal-400 group-hover:text-white group-hover:bg-teal-500 transition-all duration-300">
+                    <i className="fa-solid fa-location-dot text-xl"></i>
                 </div>
                 <div>
-                  <p className="text-sm text-gray-200">Location</p>
-                  <p className="text-lg font-medium text-white">Dhaka, Bangladesh</p>
+                  <p className="text-sm text-gray-400 font-medium">Location</p>
+                  <h4 className="text-lg md:text-xl font-semibold text-white">Dhaka, Bangladesh</h4>
                 </div>
               </div>
+
             </div>
           </div>
 
-          {/* Right Side: Contact Form */}
-          <div className="p-8 rounded-2xl bg-white/5 backdrop-blur-lg border border-white/10 shadow-xl">
-            <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+          {/* --- Right Side: Contact Form --- */}
+          <div className="p-6 md:p-8 rounded-2xl bg-neutral-900/80 border border-neutral-800 shadow-2xl relative group">
+             {/* Form Glow Effect */}
+             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur opacity-10 group-hover:opacity-20 transition duration-500"></div>
+            
+            <form onSubmit={(e) => e.preventDefault()} className="relative space-y-6 z-10">
               
-              {/* Name Input */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-white mb-2">Your Name</label>
-                <input 
-                  type="text" 
-                  id="name" 
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-                  placeholder="Enter your name"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Name Input */}
+                  <div className="space-y-2">
+                    <label htmlFor="name" className="text-sm font-medium text-gray-300">Your Name</label>
+                    <input 
+                      type="text" 
+                      id="name" 
+                      className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                      placeholder="Ex. Nahid Hasan"
+                    />
+                  </div>
+
+                  {/* Phone Input */}
+                  <div className="space-y-2">
+                    <label htmlFor="phone" className="text-sm font-medium text-gray-300">Phone Number</label>
+                    <input 
+                      type="text" 
+                      id="phone" 
+                      className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                      placeholder="Ex. +880 1XXX..."
+                    />
+                  </div>
               </div>
 
               {/* Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-white mb-2">Email Address</label>
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium text-gray-300">Email Address</label>
                 <input 
                   type="email" 
                   id="email" 
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"
-                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                  placeholder="Ex. nahid@example.com"
                 />
               </div>
 
               {/* Message Textarea */}
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-white mb-2">Message</label>
+              <div className="space-y-2">
+                <label htmlFor="message" className="text-sm font-medium text-gray-300">Message</label>
                 <textarea 
                   id="message" 
                   rows="4" 
-                  className="w-full px-4 py-3 rounded-lg bg-gray-800/50 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all resize-none"
                   placeholder="Write your message here..."
                 ></textarea>
               </div>
 
-              {/* Submit Button - Deep Blue Gradient */}
+              {/* Submit Button */}
               <button 
                 type="submit" 
-                className="w-full py-3.5 rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 text-white font-bold text-lg hover:from-blue-700 hover:to-blue-900 transform hover:scale-[1.02] transition-all duration-200 shadow-lg shadow-blue-600/30"
+                className="w-full py-3.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-lg 
+                           shadow-lg shadow-cyan-500/25 
+                           hover:shadow-cyan-500/40 hover:-translate-y-1 hover:scale-[1.01]
+                           transition-all duration-300 ease-in-out flex justify-center items-center gap-2"
               >
-                Send Message
+                Send Message <i className="fa-solid fa-paper-plane"></i>
               </button>
             </form>
           </div>
