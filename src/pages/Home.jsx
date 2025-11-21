@@ -23,8 +23,8 @@ function HomePage() {
         <DebitCard />
         <PerfectCard />
         <UserComment />
-        <Projects />
         <Workflow />
+        <Projects />      
         <Footer />
       </div>
 
