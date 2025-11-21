@@ -1,96 +1,102 @@
 import React from 'react';
 
 function Skills() {
-    // আপনার স্কিলগুলোর লিস্ট এবং তাদের কালার থিম (আইকন এবং বর্ডার কালার)
+    // শুধুমাত্র প্রফেশনাল এবং মডার্ন স্কিলগুলো রাখা হয়েছে
     const skills = [
         { 
-            id: 1, 
-            name: 'HTML', 
-            icon: 'fa-brands fa-html5', 
-            color: 'hover:text-orange-500 hover:border-orange-500 hover:shadow-orange-500/30' 
+            title: "React.js", 
+            level: "Expert",
+            desc: "Building complex web apps with modern hooks & functional components.",
+            icon: "fa-brands fa-react",
+            color: "text-cyan-400",
+            shadow: "group-hover:shadow-cyan-500/50",
+            border: "group-hover:border-cyan-500"
         },
         { 
-            id: 2, 
-            name: 'CSS', 
-            icon: 'fa-brands fa-css3-alt', 
-            color: 'hover:text-blue-500 hover:border-blue-500 hover:shadow-blue-500/30' 
+            title: "JavaScript (ES6+)", 
+            level: "Advanced",
+            desc: "Deep understanding of Asynchronous programming, DOM & Logic.",
+            icon: "fa-brands fa-js",
+            color: "text-yellow-400",
+            shadow: "group-hover:shadow-yellow-500/50",
+            border: "group-hover:border-yellow-500"
         },
         { 
-            id: 3, 
-            name: 'JavaScript', 
-            icon: 'fa-brands fa-js', 
-            color: 'hover:text-yellow-400 hover:border-yellow-400 hover:shadow-yellow-400/30' 
+            title: "Tailwind CSS", 
+            level: "Expert",
+            desc: "Rapidly building custom designs with utility-first CSS framework.",
+            icon: "fa-solid fa-wind",
+            color: "text-teal-400",
+            shadow: "group-hover:shadow-teal-500/50",
+            border: "group-hover:border-teal-500"
         },
         { 
-            id: 4, 
-            name: 'React', 
-            icon: 'fa-brands fa-react', 
-            color: 'hover:text-cyan-400 hover:border-cyan-400 hover:shadow-cyan-400/30' 
-        },
-        { 
-            id: 5, 
-            name: 'Tailwind CSS', 
-            icon: 'fa-solid fa-wind', // Tailwind এর জন্য উইন্ড আইকন ব্যবহার করা হয়েছে
-            color: 'hover:text-teal-400 hover:border-teal-400 hover:shadow-teal-400/30' 
-        },
-        { 
-            id: 6, 
-            name: 'Next.js', 
-            icon: 'fa-solid fa-n', 
-            color: 'hover:text-white hover:border-white hover:shadow-white/30' 
-        },
-        { 
-            id: 7, 
-            name: 'Git/GitHub', 
-            icon: 'fa-brands fa-github', 
-            color: 'hover:text-gray-400 hover:border-gray-400 hover:shadow-gray-400/30' 
-        },
-        { 
-            id: 8, 
-            name: 'Bootstrap', 
-            icon: 'fa-brands fa-bootstrap', 
-            color: 'hover:text-purple-500 hover:border-purple-500 hover:shadow-purple-500/30' 
-        },
+            title: "Next.js", 
+            level: "Intermediate",
+            desc: "Server Side Rendering (SSR) and Static Site Generation (SSG).",
+            icon: "fa-solid fa-n", // FontAwesome এ NextJs এর আইকন না থাকলে 'N' ব্যবহার করা হয়
+            color: "text-white",
+            shadow: "group-hover:shadow-white/50",
+            border: "group-hover:border-white"
+        }
     ];
 
     return (
-        <section className="py-12 md:py-20 w-full">
-            <div className="md:px-24 px-5">
+        <section className="py-16 md:py-24 relative">
+             {/* ব্যাকগ্রাউন্ডে হালকা আভা (Glow Effect) */}
+            <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+                <div className="absolute -top-10 -left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+                <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+            </div>
+
+            <div className="md:px-24 px-5 max-w-7xl mx-auto">
                 
-                {/* সেকশন টাইটেল */}
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-                        My <span className="text-blue-400">Skills</span>
+                {/* হেডিং সেকশন */}
+                <div className="flex flex-col items-center justify-center mb-16 text-center">
+                    <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                        Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Proficiency</span>
                     </h2>
-                    <p className="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                        Here are the technologies I work with to bring ideas to life. I am constantly learning and updating my tech stack.
-                    </p>
+                    <div className="h-1 w-20 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full"></div>
                 </div>
 
-                {/* স্কিল কার্ড গ্রিড */}
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                    {skills.map((skill) => (
+                {/* স্কিল কার্ডস */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    {skills.map((skill, index) => (
                         <div 
-                            key={skill.id}
-                            className={`bg-neutral-800 rounded-xl p-6 border-2 border-neutral-700 
-                                        flex flex-col items-center justify-center gap-4 
-                                        transform transition-all duration-300 ease-in-out
-                                        hover:scale-105 hover:-translate-y-2 hover:bg-neutral-900 
-                                        group cursor-pointer ${skill.color}`}
+                            key={index}
+                            className={`group relative bg-neutral-900/80 backdrop-blur-sm border border-neutral-800 
+                                        p-8 rounded-2xl transition-all duration-300 ease-out
+                                        hover:-translate-y-2 hover:bg-neutral-900 ${skill.border} hover:border-opacity-50`}
                         >
-                            {/* আইকন */}
-                            <div className="text-5xl md:text-6xl transition-colors duration-300 text-gray-500 group-hover:text-current">
-                                <i className={skill.icon}></i>
+                            {/* হোভার করলে কার্ডের চারপাশে হালকা শ্যাডো গ্লো করবে */}
+                            <div className={`absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500 ${skill.shadow.replace('group-hover:shadow', 'bg')}`}></div>
+
+                            <div className="flex items-start gap-6 relative z-10">
+                                {/* আইকন বক্স */}
+                                <div className={`h-16 w-16 rounded-xl bg-neutral-800 flex items-center justify-center 
+                                                text-3xl shadow-lg border border-neutral-700
+                                                transition-all duration-300 group-hover:scale-110 ${skill.color}`}>
+                                    <i className={skill.icon}></i>
+                                </div>
+
+                                {/* টেক্সট কন্টেন্ট */}
+                                <div className="flex-1">
+                                    <div className="flex justify-between items-center mb-2">
+                                        <h3 className="text-xl md:text-2xl font-bold text-gray-200 group-hover:text-white transition-colors">
+                                            {skill.title}
+                                        </h3>
+                                        <span className={`text-xs font-semibold px-3 py-1 rounded-full border bg-opacity-10 ${skill.color} border-opacity-20 border-current`}>
+                                            {skill.level}
+                                        </span>
+                                    </div>
+                                    <p className="text-gray-400 text-sm md:text-base leading-relaxed">
+                                        {skill.desc}
+                                    </p>
+                                </div>
                             </div>
-                            
-                            {/* নাম */}
-                            <h3 className="text-lg md:text-xl font-semibold text-gray-300 group-hover:text-white transition-colors duration-300">
-                                {skill.name}
-                            </h3>
                         </div>
                     ))}
                 </div>
-
             </div>
         </section>
     );
