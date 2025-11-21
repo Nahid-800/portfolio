@@ -61,18 +61,15 @@ function Message() {
 
   return (
     // ============ MAIN CONTAINER ============
-    // পরিবর্তন: 'bg-neutral-900/95' সরিয়ে 'bg-transparent' দেওয়া হয়েছে।
-    // এখন আপনার App.jsx এর ব্যাকগ্রাউন্ড দেখা যাবে।
-    <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-transparent z-50 overflow-hidden">
+    // পরিবর্তন: 'z-50' কে 'z-0' করা হয়েছে।
+    // এখন আপনার Navbar (যদি z-50 বা তার বেশি থাকে) এই সেকশনের উপরে থাকবে।
+    <div className="fixed top-[80px] left-0 right-0 bottom-0 flex flex-col font-sans bg-transparent z-0 overflow-hidden">
       
-      {/* --- Floating Background Effects (Optional) --- */}
-      {/* আপনি চাইলে এই ভাসমান বাবল গুলো রাখতে পারেন, এগুলো ব্যাকগ্রাউন্ডের ওপর সুন্দর এফেক্ট ফেলে। 
-          যদি একদম ক্লিয়ার চান তবে এই দুটি div সরিয়ে দিতে পারেন। */}
+      {/* --- Floating Background Effects --- */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none animate-pulse"></div>
       <div className="absolute bottom-20 right-10 w-80 h-80 bg-blue-600/10 rounded-full blur-3xl pointer-events-none animate-pulse delay-1000"></div>
 
-      {/* ============ HEADER (FIXED) ============ */}
-      {/* হেডারটি একটু ব্লার রাখা হয়েছে যাতে মেসেজ স্ক্রল করার সময় লেখার ওপর দিয়ে গেলে বাজে না দেখায় */}
+      {/* ============ HEADER ============ */}
       <div className="flex-none h-[70px] px-5 flex items-center gap-4 border-b border-white/10 bg-neutral-900/70 backdrop-blur-md shadow-sm z-20 w-full">
         
         <div className="relative group cursor-pointer">
@@ -94,7 +91,7 @@ function Message() {
         </div>
       </div>
 
-      {/* ============ CHAT BODY (SCROLLABLE) ============ */}
+      {/* ============ CHAT BODY ============ */}
       <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 space-y-6 scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-transparent z-10 overscroll-contain">
         
         <div className="flex justify-center mb-4">
@@ -108,7 +105,6 @@ function Message() {
             key={msg.id}
             className={`flex w-full ${msg.sender === 'user' ? 'justify-end' : 'justify-start'} animate-fade-in-up`}
           >
-            {/* মেসেজ বাবলের ব্যাকগ্রাউন্ড একটু গাড় করা হয়েছে যাতে transparent ব্যাকগ্রাউন্ডের ওপর লেখা পড়া যায় */}
             <div
               className={`relative max-w-[85%] md:max-w-[65%] px-5 py-3.5 rounded-2xl text-[15px] shadow-lg whitespace-pre-wrap leading-relaxed border backdrop-blur-md
               ${
@@ -137,7 +133,7 @@ function Message() {
         <div ref={messagesEndRef} className="pb-2" />
       </div>
 
-      {/* ============ INPUT AREA (FIXED BOTTOM) ============ */}
+      {/* ============ INPUT AREA ============ */}
       <form 
         onSubmit={handleSend} 
         className="flex-none p-4 bg-neutral-900/70 backdrop-blur-md border-t border-white/10 flex items-end gap-3 w-full z-20"
