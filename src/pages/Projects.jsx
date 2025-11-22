@@ -45,10 +45,10 @@ function Projects() {
         },
         {
             id: 5,
-            title: "Social Media Dashboard",
+            title: "Survey Jumper Tool",
             description: "Analytics dashboard providing insights on social media engagement with charts and data visualization.",
-            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&auto=format&fit=crop&q=60",
-            techStack: ["Next.js", "Chart.js", "Node.js"],
+            image: "/Images/Survey.png",
+            techStack: ["React", "Firebase", "Tailwind "],
             liveLink: "#",
             codeLink: "#"
         },
