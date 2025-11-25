@@ -36,10 +36,10 @@ function Projects() {
         // --- নিচে নতুন ৩টি প্রজেক্ট যোগ করা হলো যা বাটনে ক্লিক করলে আসবে ---
         {
             id: 4,
-            title: "Task Management App",
+            title: "Flowers Landing page",
             description: "A productivity tool with drag-and-drop features, user authentication, and real-time database updates.",
-            image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=500&auto=format&fit=crop&q=60",
-            techStack: ["React", "Firebase", "Tailwind"],
+            image: "/Images/Flowers.png",
+            techStack: ["React", "Swing Library", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
         },
