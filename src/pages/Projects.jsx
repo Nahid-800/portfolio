@@ -55,10 +55,10 @@ function Projects() {
         {
             id: 6,
             title: "AI Image Generator",
-            description: "An AI-powered application that generates images based on user prompts using OpenAI API.",
-            image: "https://images.unsplash.com/photo-1617791160505-6f00504e3504?w=500&auto=format&fit=crop&q=60",
-            techStack: ["React", "OpenAI API", "CSS"],
-            liveLink: "#",
+            description: "An AI-powered application that generates images based on user prompts using Pollinations.ai API",
+            image: "/Images/AI-img.png",
+            techStack: ["React", "Pollinations.ai API", "Tailwind"],
+            liveLink: "https://ai-image-10.vercel.app/",
             codeLink: "#"
         }
     ];
