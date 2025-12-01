@@ -17,9 +17,9 @@ function Projects() {
         },
         {
             id: 2,
-            title: "Crypto vision",
+            title: "Crypto Hunter Dashboard",
             description: "A comprehensive cryptocurrency tracking dashboard that displays real-time market trends, coin prices, and historical data.",
-            image: "/Projects/crypto-10.vercel.app_(Nest Hub Max) (1).png",
+            image: "/Projects/Crypto.avif",
             techStack: ["React.js", "API", "Tailwind "],
             liveLink: "https://crypto-10.vercel.app/",
             codeLink: "#"
@@ -43,8 +43,19 @@ function Projects() {
             liveLink: "#",
             codeLink: "#"
         },
+       
         {
             id: 5,
+            title: "AI Image Generator",
+            description: "An AI-powered application that generates images based on user prompts using Pollinations.ai API",
+            image: "/Projects/Ai-img.avif",
+            techStack: ["React", "Pollinations.ai API", "Tailwind"],
+            liveLink: "https://ai-image-10.vercel.app/",
+            codeLink: "#"
+        },
+
+         {
+            id: 6,
             title: "Survey Jumper Tool",
             description: "An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
             image: "/Projects/Survey.avif",
@@ -52,15 +63,6 @@ function Projects() {
             liveLink: "#",
             codeLink: "#"
         },
-        {
-            id: 6,
-            title: "AI Image Generator",
-            description: "An AI-powered application that generates images based on user prompts using Pollinations.ai API",
-            image: "/Projects/AI-img.avif",
-            techStack: ["React", "Pollinations.ai API", "Tailwind"],
-            liveLink: "https://ai-image-10.vercel.app/",
-            codeLink: "#"
-        }
     ];
 
     // বাটন ক্লিক হ্যান্ডলার

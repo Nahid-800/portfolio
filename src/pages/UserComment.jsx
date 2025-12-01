@@ -6,21 +6,21 @@ function Testimonials() {
         {
             image: "/Images/Frame.svg", // আপনার আগের আইকন পাথ
             comment: "Working with them was a fantastic experience. They are a highly skilled developer who delivered a high-quality product on schedule. Their communication was excellent throughout the entire project.",
-            profileImg: "/Images/client-1.jpg", // ক্লায়েন্ট ১ এর ছবি
+            profileImg: "/Clients Say/client-1.jpg", // ক্লায়েন্ট ১ এর ছবি
             userName: "Sarah Johnson",
             userTitle: "Project Manager, Tech Solutions Inc."
         },
         {
             image: "/Images/Frame.svg", // আপনার আগের আইকন পাথ
             comment: "As a designer, it's a dream to work with a developer who pays such close attention to detail. They perfectly translated my Figma designs into a pixel-perfect, interactive web application. Highly recommended!",
-            profileImg: "/Images/client-2.jpg", // ক্লায়েন্ট ২ এর ছবি
+            profileImg: "/Clients Say/client-2.jpg", // ক্লায়েন্ট ২ এর ছবি
             userName: "Michael Chen",
             userTitle: "Lead UI/UX Designer, Creative Minds"
         },
         {
             image: "/Images/Frame.svg", // আপনার আগের আইকন পাথ
             comment: "Their technical expertise and problem-solving skills were invaluable to our startup. They not only built a fast and responsive website but also provided great suggestions to improve the user experience.",
-            profileImg: "/Images/client-3.jpg", // ক্লায়েন্ট ৩ এর ছবি
+            profileImg: "/Clients Say/client-3.jpg", // ক্লায়েন্ট ৩ এর ছবি
             userName: "David Lee",
             userTitle: "Founder, Innovate Co."
         }
