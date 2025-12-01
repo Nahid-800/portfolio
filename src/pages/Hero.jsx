@@ -95,7 +95,7 @@ function Hero() {
                                             hover:scale-105 hover:shadow-blue-500/50 group">
                                 <div className={`bg-transparent p-1 rounded-full`}>
                                     <img 
-                                        src="/person.webp" 
+                                        src="/Hero/person.avif" 
                                         alt="Nahid" 
                                         className="h-72 w-72 md:h-96 md:w-96 rounded-full object-cover 
                                                    transition-transform duration-300 ease-in-out 

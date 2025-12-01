@@ -10,7 +10,7 @@ function Projects() {
             id: 1,
             title: "E-Commerce Website",
             description: "A full-featured e-commerce platform with cart functionality, payment gateway integration, and user dashboard.",
-            image: "/Images/e-comm.png",
+            image: "/Projects/e-commrs.avif",
             techStack: ["React", "Tailwind", "Redux"],
             liveLink: "#",
             codeLink: "#"
@@ -19,7 +19,7 @@ function Projects() {
             id: 2,
             title: "Crypto vision",
             description: "A comprehensive cryptocurrency tracking dashboard that displays real-time market trends, coin prices, and historical data.",
-            image: "/Images/crypto-10.vercel.app_(Nest Hub Max) (1).png",
+            image: "/Projects/crypto-10.vercel.app_(Nest Hub Max) (1).png",
             techStack: ["React.js", "API", "Tailwind "],
             liveLink: "https://crypto-10.vercel.app/",
             codeLink: "#"
@@ -28,7 +28,7 @@ function Projects() {
             id: 3,
             title: "Weather Dashboard",
             description: "Real-time weather forecasting app fetching data from OpenWeatherMap API with location support.",
-            image: "/Images/weathers-10.vercel.app_(Nest Hub Max) (4) (1).png",
+            image: "/Projects/weathers.avif",
             techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"
@@ -38,7 +38,7 @@ function Projects() {
             id: 4,
             title: "Flowers Landing page",
             description: "A visually appealing and responsive landing page designed for a floral shop, featuring elegant animations and product showcases.",
-            image: "/Images/Flower.jpg",
+            image: "/Projects/Flower.avif",
             techStack: ["React", "Swing Library", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
@@ -47,7 +47,7 @@ function Projects() {
             id: 5,
             title: "Survey Jumper Tool",
             description: "An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
-            image: "/Images/Survey.png",
+            image: "/Projects/Survey.avif",
             techStack: ["React", "Firebase", "Tailwind "],
             liveLink: "#",
             codeLink: "#"
@@ -56,7 +56,7 @@ function Projects() {
             id: 6,
             title: "AI Image Generator",
             description: "An AI-powered application that generates images based on user prompts using Pollinations.ai API",
-            image: "/Images/AI-img.png",
+            image: "/Projects/AI-img.avif",
             techStack: ["React", "Pollinations.ai API", "Tailwind"],
             liveLink: "https://ai-image-10.vercel.app/",
             codeLink: "#"
