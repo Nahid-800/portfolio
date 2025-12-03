@@ -48,7 +48,7 @@ function Projects() {
             id: 5,
             title: "AI Image Generator",
             description: "An AI-powered application that generates images based on user prompts using Pollinations.ai API",
-            image: "/Projects/Ai-img.avif",
+            image: "/Projects/AI-img.avif",
             techStack: ["React", "Pollinations.ai API", "Tailwind"],
             liveLink: "https://ai-image-10.vercel.app/",
             codeLink: "#"
