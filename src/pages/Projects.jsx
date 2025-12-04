@@ -106,23 +106,26 @@ function Projects() {
                                 className="group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
                             >
                                 {/* Image Container */}
-                                <div className="relative h-60 overflow-hidden">
-                                    <div className="absolute inset-0 bg-slate-900/20 z-10 group-hover:bg-transparent transition-colors duration-500"></div>
+                                <div className="relative w-full h-auto overflow-hidden bg-slate-950">
+                                    
+                                    {/* REMOVED: Dark overlay removed so image looks clearer/brighter */}
+                                    {/* <div className="absolute inset-0 bg-slate-900/20 z-10 ..."></div> */}
+                                    
                                     <img 
                                         src={project.image} 
                                         alt={project.title} 
                                         loading="lazy"
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
+                                        // ADDED: brightness-110 (makes default brighter) and group-hover:brightness-125 (extra pop on hover)
+                                        className="w-full h-auto transition-transform duration-700 group-hover:scale-105 brightness-110 group-hover:brightness-125"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90 z-20"></div>
                                     
-                                    <div className="absolute top-4 right-4 z-30 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-orange-500/30">
-                                        <span className="text-[10px] font-bold uppercase tracking-wider text-orange-400">Featured</span>
-                                    </div>
+                                    {/* REDUCED OPACITY: Changed from opacity-90 to opacity-60 so bottom is clearer */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-20"></div>
                                 </div>
 
-                                <div className="p-6 pt-0 flex flex-col flex-1 relative z-20">
-                                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300">
+                                <div className="p-6 flex flex-col flex-1 relative z-20">
+                                    {/* Title Spacing: Mobile mt-4, Desktop mt-0 */}
+                                    <h3 className="text-2xl font-bold text-white mb-3 mt-4 md:mt-0 group-hover:text-orange-400 transition-colors duration-300">
                                         {project.title}
                                     </h3>
                                     
@@ -140,16 +143,13 @@ function Projects() {
 
                                     <div className="flex items-center gap-4 mt-auto">
                                         <a href={project.liveLink} target="_blank" rel="noopener noreferrer" 
-                                           className="flex-1 group/btn relative overflow-hidden rounded-lg bg-gradient-to-r from-orange-500 to-amber-600 p-[1px] shadow-lg hover:shadow-orange-500/20 transition-all duration-300">
-                                            <div className="relative h-full w-full bg-[#020617] group-hover/btn:bg-transparent transition-colors duration-300 rounded-lg flex items-center justify-center py-2.5">
-                                                <span className="flex items-center gap-2 text-sm font-bold text-white group-hover/btn:text-white transition-colors">
-                                                    <FaEye className="text-orange-400 group-hover/btn:text-white" /> Live Demo
-                                                </span>
-                                            </div>
+                                           className="flex-1 flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-orange-500 to-amber-600 py-3 text-white shadow-lg shadow-orange-500/20 transition-all duration-300 hover:shadow-orange-500/50 hover:-translate-y-1">
+                                            <FaEye className="text-white" /> 
+                                            <span className="text-sm font-bold">Live Demo</span>
                                         </a>
                                         
                                         <a href={project.codeLink} target="_blank" rel="noopener noreferrer" 
-                                           className="flex-1 flex items-center justify-center gap-2 bg-slate-800/50 border border-white/10 text-slate-300 text-sm font-bold py-2.5 rounded-lg hover:bg-slate-700 hover:text-white hover:border-white/20 transition-all duration-300">
+                                           className="flex-1 flex items-center justify-center gap-2 bg-slate-800/50 border border-white/10 text-slate-300 text-sm font-bold py-3 rounded-lg hover:bg-slate-700 hover:text-white hover:border-white/20 transition-all duration-300">
                                             <FaGithub size={16} /> Code
                                         </a>
                                     </div>

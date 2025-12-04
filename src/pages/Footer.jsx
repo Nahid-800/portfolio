@@ -47,10 +47,16 @@ function Footer() {
                     
                     <div className="lg:col-span-5 space-y-6">
                         <div className="flex items-center gap-3">
-                             <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-orange-500/20">
-                                N
-                             </div>
-                            <h2 className="text-2xl font-bold text-white tracking-wide">Nahid<span className="text-orange-500">.Dev</span></h2>
+                             <div className="relative w-11 h-11 flex items-center justify-center">
+                <div className="absolute inset-0 bg-orange-500/30 blur-xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full relative z-10 drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 17L12 22L22 17" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 12L12 17L22 12" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+            </div>
+            
+                            <h2 className="text-2xl font-bold text-white tracking-wide">Nahid<span className="text-orange-500"> Developer</span></h2>
                         </div>
                         <p className="text-slate-400 text-base leading-relaxed max-w-sm font-light">
                             Crafting digital experiences with passion and precision.

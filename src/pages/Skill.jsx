@@ -10,9 +10,13 @@ function Skills() {
             levelText: "Expert",
             desc: "Building complex web apps with modern hooks & functional components.",
             icon: <SiReact />,
-            color: "text-sky-400",
+            color: "text-sky-400", // Icon retains brand color
             bgGlow: "group-hover:bg-sky-500/10",
-            borderGlow: "group-hover:border-sky-500/50"
+            borderGlow: "group-hover:border-sky-500/50",
+            
+            // Expert: Deep Green (Emerald)
+            badgeStyle: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+            barColor: "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]"
         },
         { 
             title: "JavaScript (ES6+)", 
@@ -20,9 +24,13 @@ function Skills() {
             levelText: "Advanced",
             desc: "Deep understanding of Asynchronous programming, DOM & Logic.",
             icon: <SiJavascript />,
-            color: "text-yellow-400",
+            color: "text-yellow-400", // Icon retains brand color
             bgGlow: "group-hover:bg-yellow-500/10",
-            borderGlow: "group-hover:border-yellow-500/50"
+            borderGlow: "group-hover:border-yellow-500/50",
+
+            // Advanced: Lighter Green (Lime) - "Ektu kom green"
+            badgeStyle: "text-lime-400 bg-lime-500/10 border-lime-500/20",
+            barColor: "bg-lime-400 shadow-[0_0_10px_rgba(163,230,53,0.4)]"
         },
         { 
             title: "Tailwind CSS", 
@@ -30,9 +38,13 @@ function Skills() {
             levelText: "Expert",
             desc: "Rapidly building custom designs with utility-first CSS framework.",
             icon: <SiTailwindcss />,
-            color: "text-cyan-400",
+            color: "text-cyan-400", // Icon retains brand color
             bgGlow: "group-hover:bg-cyan-500/10",
-            borderGlow: "group-hover:border-cyan-500/50"
+            borderGlow: "group-hover:border-cyan-500/50",
+
+            // Expert: Deep Green (Emerald)
+            badgeStyle: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
+            barColor: "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]"
         },
         { 
             title: "Next.js", 
@@ -40,14 +52,17 @@ function Skills() {
             levelText: "Intermediate",
             desc: "Server Side Rendering (SSR) and Static Site Generation (SSG).",
             icon: <SiNextdotjs />,
-            color: "text-white",
+            color: "text-white", // Icon retains brand color
             bgGlow: "group-hover:bg-white/10",
-            borderGlow: "group-hover:border-white/50"
+            borderGlow: "group-hover:border-white/50",
+
+            // Intermediate: White/Black (Monochrome) - "Sada Kala"
+            badgeStyle: "text-slate-300 bg-slate-800 border-slate-600",
+            barColor: "bg-slate-200 shadow-[0_0_10px_rgba(255,255,255,0.2)]"
         }
     ];
 
     return (
-        // BG removed, using global
         <section className="relative w-full py-20 md:py-32 bg-transparent overflow-hidden">
             
             <div className="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
@@ -79,13 +94,14 @@ function Skills() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            // Optimized for mobile (Solid BG) vs Desktop (Glass)
                             className={`group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 p-8 rounded-2xl transition-all duration-300 
                                         hover:-translate-y-1 ${skill.borderGlow} hover:shadow-lg overflow-hidden`}
                         >
+                            {/* Background Glow */}
                             <div className={`absolute inset-0 opacity-0 transition-opacity duration-500 ${skill.bgGlow}`}></div>
 
                             <div className="relative z-10 flex items-start gap-6">
+                                {/* Icon Section (Brand Colors retained) */}
                                 <div className={`p-4 rounded-xl bg-slate-800/50 border border-white/5 text-4xl ${skill.color} 
                                                 transition-transform duration-300 group-hover:scale-110 shadow-lg`}>
                                     {skill.icon}
@@ -96,7 +112,9 @@ function Skills() {
                                         <h3 className="text-xl font-bold text-white group-hover:text-orange-100 transition-colors">
                                             {skill.title}
                                         </h3>
-                                        <span className={`text-xs font-bold px-2 py-1 rounded border border-white/10 text-slate-300 bg-slate-800/50`}>
+                                        
+                                        {/* Dynamic Badge Color based on Level */}
+                                        <span className={`text-xs font-bold px-2 py-1 rounded border ${skill.badgeStyle}`}>
                                             {skill.levelText}
                                         </span>
                                     </div>
@@ -104,12 +122,14 @@ function Skills() {
                                         {skill.desc}
                                     </p>
 
+                                    {/* Progress Bar Background */}
                                     <div className="w-full h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
+                                        {/* Dynamic Progress Bar Color */}
                                         <motion.div 
                                             initial={{ width: 0 }}
                                             whileInView={{ width: skill.level }}
                                             transition={{ duration: 1, delay: 0.5 }}
-                                            className={`h-full rounded-full ${skill.color === 'text-white' ? 'bg-slate-200' : skill.color.replace('text-', 'bg-')}`}
+                                            className={`h-full rounded-full ${skill.barColor}`}
                                         />
                                     </div>
                                 </div>

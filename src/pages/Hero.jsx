@@ -25,7 +25,6 @@ const SlideshowCard = memo(() => {
   return (
     <div className="absolute bottom-5 left-5 right-5 z-20">
         <motion.div 
-          
             className="bg-slate-900/95 md:bg-slate-900/85 md:backdrop-blur-md border border-orange-500/20 p-4 rounded-xl shadow-lg overflow-hidden transform-gpu"
         >
             <AnimatePresence mode="wait">
@@ -71,6 +70,14 @@ const Hero = () => {
   
   // Mobile check state
   const [isMobile, setIsMobile] = useState(true);
+
+  // --- SCROLL FUNCTION ---
+  const scrollToProjects = () => {
+    const projectsSection = document.getElementById('projects');
+    if (projectsSection) {
+        projectsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   useEffect(() => {
       // Check if device is mobile to disable heavy tilt effects
@@ -173,7 +180,10 @@ const Hero = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-5 relative z-10">
-                <button className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2">
+                <button 
+                    onClick={scrollToProjects}
+                    className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2"
+                >
                     View My Work 
                     <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </button>
