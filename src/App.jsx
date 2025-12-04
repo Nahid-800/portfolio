@@ -5,24 +5,29 @@ import HomePage from "./pages/Home";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 
+
+const GlobalBackground = () => (
+
+  <div className="fixed inset-0 z-[-1] pointer-events-none transform-gpu">
+      <div className="absolute inset-0 bg-[#020617]"></div>  
+      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-orange-600/10 blur-[80px] opacity-50 will-change-transform"></div>
+      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vh] rounded-full bg-red-900/10 blur-[80px] opacity-50 will-change-transform"></div>
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-5 mix-blend-overlay"></div>
+  </div>
+);
+
 function App() {
   return (
     <BrowserRouter>
-      <Navber />
-      
-      {/* 
-         পরিবর্তনসমূহ:
-         1. 'section' ট্যাগ সরিয়ে 'main' দেওয়া হয়েছে।
-         2. ফ্লেক্সবক্স (flex, justify-center) সরিয়ে দেওয়া হয়েছে যাতে পেজগুলো তাদের নিজস্ব লেআউট পায়।
-         3. নির্দিষ্ট 'bg-image' বা 'bg-gray-900' সরানো হয়েছে।
-         4. শুধু একটি বেস কালার 'bg-[#050505]' রাখা হয়েছে যাতে পেজ লোড হওয়ার সময় সাদা ফ্ল্যাশ না মারে।
-      */}
-      
-      <main className="w-full min-h-screen bg-[#050505] text-white">
+      <GlobalBackground />
+
+      <div className="relative z-50">
+        <Navber />
+      </div>
+      <main className="w-full min-h-screen text-white relative z-10">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/contact" element={<Contact />} />
-            {/* ছোট হাতের 'about' পাথ কনভেনশন অনুযায়ী ভালো */}
             <Route path="/about" element={<About/>} /> 
           </Routes>
       </main>

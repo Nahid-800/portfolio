@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { 
   FiMenu, FiX, FiHome, FiLayers, FiUser, FiMail, FiBriefcase, FiArrowUpRight 
@@ -11,12 +11,10 @@ const Navbar = () => {
   const { scrollY } = useScroll();
   const location = useLocation();
 
-  // স্ক্রল ডিটেকশন
   useMotionValueEvent(scrollY, "change", (latest) => {
     setScrolled(latest > 20);
   });
 
-  // মেনু লিংক ডাটা
   const navLinks = [
     { title: "Home", path: "/", icon: <FiHome /> },
     { title: "Projects", path: "/projects", icon: <FiLayers /> },
@@ -29,17 +27,17 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      // --- CHANGE: High Blur & Lower Opacity here ---
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+      // Optimization: Mobile blur reduced, Desktop blur kept high
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${
         scrolled
-          ? "bg-[#020617]/75 backdrop-blur-[30px] border-b border-orange-500/10 shadow-[0_10px_30px_-10px_rgba(2,6,23,0.5)] py-3" // Heavy Blur added
+          ? "bg-[#020617]/90 md:bg-[#020617]/75 backdrop-blur-md md:backdrop-blur-[30px] border-b border-orange-500/10 shadow-[0_10px_30px_-10px_rgba(2,6,23,0.5)] py-3"
           : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
-          {/* --- 1. PREMIUM LOGO --- */}
+          {/* LOGO */}
           <Link 
             to="/" 
             className="flex items-center gap-3 group"
@@ -64,7 +62,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          {/* --- 2. DESKTOP MENU --- */}
+          {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-1 bg-white/5 px-1.5 py-1.5 rounded-full border border-white/5 backdrop-blur-md shadow-inner">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.path;
@@ -89,7 +87,7 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* --- 3. HIRE ME BUTTON (Solid Orange Theme) --- */}
+          {/* HIRE ME & TOGGLE */}
           <div className="flex items-center gap-4">
             <motion.a
               href="#contact"
@@ -101,7 +99,6 @@ const Navbar = () => {
               HIRE ME
             </motion.a>
 
-            {/* Mobile Menu Toggle */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden p-2.5 rounded-xl bg-slate-800/50 text-slate-300 hover:text-orange-400 border border-slate-700 hover:border-orange-500/50 transition-all active:scale-95 backdrop-blur-sm"
@@ -112,7 +109,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* --- 4. PREMIUM MOBILE MENU --- */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -120,10 +117,11 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-            // --- CHANGE: Deep Blur for Mobile Menu ---
-            className="md:hidden overflow-hidden bg-[#020617]/80 backdrop-blur-[50px] border-b border-orange-500/20 relative shadow-2xl"
+            // Optimization: Lower blur for mobile menu
+            className="md:hidden overflow-hidden bg-[#020617]/95 backdrop-blur-md border-b border-orange-500/20 relative shadow-2xl"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 blur-[80px] rounded-full pointer-events-none"></div>
+            {/* Removed heavy blur blob for mobile, kept simple gradient */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full pointer-events-none"></div>
 
             <div className="px-4 pt-4 pb-8 flex flex-col gap-3 relative z-10">
               {navLinks.map((link, idx) => {
@@ -158,7 +156,6 @@ const Navbar = () => {
                 );
               })}
 
-              {/* Mobile Hire Me Button */}
               <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}

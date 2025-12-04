@@ -10,7 +10,7 @@ function Skills() {
             levelText: "Expert",
             desc: "Building complex web apps with modern hooks & functional components.",
             icon: <SiReact />,
-            color: "text-sky-400", // Original Tech Color
+            color: "text-sky-400",
             bgGlow: "group-hover:bg-sky-500/10",
             borderGlow: "group-hover:border-sky-500/50"
         },
@@ -47,18 +47,11 @@ function Skills() {
     ];
 
     return (
-        <section className="relative w-full py-20 md:py-32 bg-[#020617] overflow-hidden">
+        // BG removed, using global
+        <section className="relative w-full py-20 md:py-32 bg-transparent overflow-hidden">
             
-             {/* Global Background */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-[20%] right-[-5%] w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[10%] left-[-10%] w-[400px] h-[400px] bg-red-900/10 rounded-full blur-[100px]"></div>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-            </div>
-
             <div className="max-w-7xl mx-auto px-5 md:px-10 relative z-10">
                 
-                {/* Header */}
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -86,14 +79,13 @@ function Skills() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className={`group relative bg-slate-900/40 backdrop-blur-md border border-white/5 p-8 rounded-2xl transition-all duration-300 
+                            // Optimized for mobile (Solid BG) vs Desktop (Glass)
+                            className={`group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 p-8 rounded-2xl transition-all duration-300 
                                         hover:-translate-y-1 ${skill.borderGlow} hover:shadow-lg overflow-hidden`}
                         >
-                            {/* Hover Background Flash */}
                             <div className={`absolute inset-0 opacity-0 transition-opacity duration-500 ${skill.bgGlow}`}></div>
 
                             <div className="relative z-10 flex items-start gap-6">
-                                {/* Icon Container */}
                                 <div className={`p-4 rounded-xl bg-slate-800/50 border border-white/5 text-4xl ${skill.color} 
                                                 transition-transform duration-300 group-hover:scale-110 shadow-lg`}>
                                     {skill.icon}
@@ -112,7 +104,6 @@ function Skills() {
                                         {skill.desc}
                                     </p>
 
-                                    {/* Progress Bar */}
                                     <div className="w-full h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
                                         <motion.div 
                                             initial={{ width: 0 }}

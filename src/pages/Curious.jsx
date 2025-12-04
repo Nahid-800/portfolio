@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaArrowRight, FaCode } from 'react-icons/fa';
 
 function Curious() {
-    // Animation Variants
     const fadeUp = {
         hidden: { opacity: 0, y: 30 },
         visible: { 
@@ -14,19 +13,12 @@ function Curious() {
     };
 
     return (
-        <section className='relative w-full py-20 md:py-32 overflow-hidden flex items-center justify-center bg-[#020617]'>
+        // BG removed, using global
+        <section className='relative w-full py-20 md:py-32 overflow-hidden flex items-center justify-center bg-transparent'>
             
-            {/* 1. Global Background Effects */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[120px] opacity-40"></div>
-                <div className="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-red-900/10 rounded-full blur-[100px] opacity-40"></div>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-            </div>
-
             <div className='max-w-6xl mx-auto px-6 lg:px-8 relative z-10'>
                 <div className='flex flex-col md:flex-row items-center justify-between gap-12 lg:gap-20'>
                     
-                    {/* --- LEFT SIDE: TEXT --- */}
                     <motion.div 
                         className='w-full md:w-1/2 text-center md:text-left'
                         initial="hidden"
@@ -34,7 +26,6 @@ function Curious() {
                         viewport={{ once: true, margin: "-50px" }}
                         variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
                     >
-                        {/* Badge */}
                         <motion.div variants={fadeUp} className="flex justify-center md:justify-start mb-6">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/10 backdrop-blur-md">
                                 <FaCode className="text-orange-400 text-xs" />
@@ -42,7 +33,6 @@ function Curious() {
                             </div>
                         </motion.div>
 
-                        {/* Heading */}
                         <motion.div variants={fadeUp}>
                             <h2 className='text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-[1.2] tracking-tight'>
                                 Curious How This <br />
@@ -55,12 +45,10 @@ function Curious() {
                             </h2>
                         </motion.div>
 
-                        {/* Description */}
                         <motion.p variants={fadeUp} className='text-slate-400 text-base md:text-lg mb-8 leading-relaxed max-w-lg mx-auto md:mx-0 font-light'>
                             This portfolio was brought to life using <span className='text-orange-200 font-semibold'>React</span> and <span className='text-amber-200 font-semibold'>Tailwind CSS</span>. I focused on clean architecture, reusable components, and smooth animations.
                         </motion.p>
 
-                        {/* UPDATED BUTTON STYLE */}
                         <motion.div variants={fadeUp} className='flex justify-center md:justify-start'>
                             <a 
                                 href="https://github.com/NahidAhmed-12/portfolio.git" 
@@ -68,10 +56,7 @@ function Curious() {
                                 rel="noopener noreferrer" 
                                 className="group relative inline-block"
                             >
-                                {/* Blur Effect Behind Button */}
                                 <div className="absolute -inset-0.5 bg-gradient-to-r from-orange-500 to-red-600 rounded-full blur opacity-50 group-hover:opacity-90 transition duration-500 animate-pulse"></div>
-                                
-                                {/* Main Button */}
                                 <button className='relative flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-600 text-white font-bold py-3.5 px-8 rounded-xl shadow-xl hover:shadow-[0_0_20px_rgba(234,88,12,0.5)] transform hover:scale-105 transition-all duration-300'>
                                     <FaGithub className="text-xl group-hover:rotate-12 transition-transform duration-300" />
                                     <span>View Source Code</span>
@@ -81,7 +66,6 @@ function Curious() {
                         </motion.div>
                     </motion.div>
 
-                    {/* --- RIGHT SIDE: VISUAL --- */}
                     <motion.div 
                         className='w-full md:w-1/2 flex justify-center relative perspective-1000'
                         initial={{ opacity: 0, scale: 0.9 }}
@@ -108,6 +92,7 @@ function Curious() {
                                         className='relative w-full max-w-sm drop-shadow-lg opacity-90 hover:opacity-100 transition-opacity' 
                                         src="/assets/programing.svg" 
                                         alt="Programming illustration" 
+                                        loading="lazy"
                                     />
                                 </div>
                             </div>

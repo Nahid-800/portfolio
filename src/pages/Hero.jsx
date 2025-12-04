@@ -11,16 +11,6 @@ const techSlides = [
   { icon: <FaFigma />, name: "UI/UX Design", label: "Creative" },
 ];
 
-// --- 1. GLOBAL BACKGROUND ---
-const GlobalBackground = memo(() => (
-  <div className="absolute inset-0 z-0 pointer-events-none">
-      <div className="absolute inset-0 bg-[#020617]"></div>
-      <div className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vh] rounded-full bg-orange-600/10 blur-[100px] transform-gpu"></div>
-      <div className="absolute bottom-[-10%] right-[-10%] w-[50vw] h-[50vh] rounded-full bg-red-900/10 blur-[100px] transform-gpu"></div>
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-  </div>
-));
-
 // --- 2. CARD SLIDESHOW ---
 const SlideshowCard = memo(() => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -35,7 +25,8 @@ const SlideshowCard = memo(() => {
   return (
     <div className="absolute bottom-5 left-5 right-5 z-20">
         <motion.div 
-            className="bg-slate-900/85 backdrop-blur-md border border-orange-500/20 p-4 rounded-xl shadow-lg overflow-hidden transform-gpu"
+          
+            className="bg-slate-900/95 md:bg-slate-900/85 md:backdrop-blur-md border border-orange-500/20 p-4 rounded-xl shadow-lg overflow-hidden transform-gpu"
         >
             <AnimatePresence mode="wait">
             <motion.div 
@@ -77,48 +68,55 @@ const Hero = () => {
   const cardRef = useRef(null);
   const rectRef = useRef(null);
   const isHovering = useRef(false);
+  
+  // Mobile check state
+  const [isMobile, setIsMobile] = useState(true);
+
+  useEffect(() => {
+      // Check if device is mobile to disable heavy tilt effects
+      const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+      checkMobile();
+      window.addEventListener('resize', checkMobile);
+      return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["5deg", "-5deg"]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-5deg", "5deg"]);
 
   const handleMouseEnter = useCallback((e) => {
+    if (isMobile) return;
     isHovering.current = true;
     rectRef.current = e.currentTarget.getBoundingClientRect();
-  }, []);
+  }, [isMobile]);
 
   const handleMouseMove = useCallback((e) => {
-    if (!isHovering.current || !rectRef.current) return;
+    if (isMobile || !isHovering.current || !rectRef.current) return;
     const xPct = (e.clientX - rectRef.current.left) / rectRef.current.width - 0.5;
     const yPct = (e.clientY - rectRef.current.top) / rectRef.current.height - 0.5;
     x.set(xPct);
     y.set(yPct);
-  }, [x, y]);
+  }, [x, y, isMobile]);
 
   const handleMouseLeave = useCallback(() => {
+    if (isMobile) return;
     isHovering.current = false;
     x.set(0);
     y.set(0);
-  }, [x, y]);
+  }, [x, y, isMobile]);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#020617] text-white overflow-hidden font-sans selection:bg-orange-500/30 selection:text-orange-100">
+ 
+    <div className="relative w-full min-h-screen bg-transparent text-white overflow-hidden font-sans selection:bg-orange-500/30 selection:text-orange-100">
       
-      <GlobalBackground />
-
-      {/* FIX 1: Padding 조정 
-          - pt-32 (Mobile): Navbar থেকে নামানো হয়েছে কিন্তু খুব বেশি নয়।
-          - lg:pt-28 (Desktop): আগেরবারের (pt-36) চেয়ে কমিয়ে উপরে তোলা হয়েছে, কিন্তু অরিজিনাল (pt-20) এর চেয়ে বাড়িয়ে গ্যাপ ঠিক রাখা হয়েছে। 
-      */}
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 pt-32 pb-10 lg:pt-28 relative z-10 gap-12 lg:gap-0">
         
-        {/* --- LEFT SIDE: CONTENT --- */}
+
         <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left z-20 relative"
         >
-             {/* Spacing কমিয়ে 'space-y-4' রাখা হয়েছে */}
              <div className="space-y-4 relative z-10">
               
               {/* Badge */}
@@ -151,7 +149,6 @@ const Hero = () => {
                 </span>
               </h1>
               
-              {/* FIX 2: Typing Animation (whitespace-nowrap added to keep in one line) */}
               <div className="text-slate-400 text-lg sm:text-2xl font-light min-h-[40px] flex items-center justify-center lg:justify-start whitespace-nowrap">
                  <span>I am a&nbsp;</span>
                  <span className="font-semibold text-slate-100 text-left">
@@ -170,13 +167,11 @@ const Hero = () => {
                  </span>
               </div>
 
-              {/* Description */}
               <p className="text-slate-400 text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed font-light">
                 Crafting pixel-perfect web experiences with a warm touch. I transform complex problems into simple, beautiful, and intuitive designs.
               </p>
             </div>
 
-            {/* FIX 3: Buttons Spacing Reduced (pt-6 -> pt-5) */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-5 relative z-10">
                 <button className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2">
                     View My Work 
@@ -188,7 +183,6 @@ const Hero = () => {
                 </button>
             </div>
 
-            {/* FIX 3: Social Spacing Reduced (pt-5 -> pt-4) to move it UP */}
             <div className="flex items-center justify-center lg:justify-start gap-8 pt-4 relative z-10">
                <div className="flex gap-5">
                   {[FaGithub, FaLinkedinIn, FaFacebookF].map((Icon, i) => (
@@ -206,20 +200,22 @@ const Hero = () => {
         </motion.div>
 
 
-        {/* --- RIGHT SIDE --- */}
+
         <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full lg:w-1/2 flex justify-center lg:justify-end relative perspective-1000 z-30"
-            onMouseEnter={handleMouseEnter}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+            // Events only attached if not mobile to save performance
+            onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+            onMouseMove={!isMobile ? handleMouseMove : undefined}
+            onMouseLeave={!isMobile ? handleMouseLeave : undefined}
             ref={cardRef}
         >
              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] -z-10 pointer-events-none flex items-center justify-center">
                  <div className="absolute w-[350px] h-[350px] bg-orange-500/20 rounded-full blur-[80px]"></div>
-                 <div className="absolute w-[400px] h-[400px] border border-orange-500/10 rounded-full animate-[spin_10s_linear_infinite] border-dashed will-change-transform"></div>
+                 {/* Reduced spin duration for performance */}
+                 <div className="absolute w-[400px] h-[400px] border border-orange-500/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed will-change-transform"></div>
                  <div className="absolute inset-0 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:20px_20px] opacity-20 mask-image-radial-gradient"></div>
              </div>
 
@@ -227,16 +223,19 @@ const Hero = () => {
              <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl" style={{ willChange: 'transform' }}><SiRedux className="text-3xl"/></motion.div>
 
              <motion.div 
-                style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+               
+                style={!isMobile ? { rotateX, rotateY, transformStyle: "preserve-3d" } : {}}
                 className="relative w-[300px] h-[420px] sm:w-[350px] sm:h-[480px] rounded-[24px] border border-white/10 shadow-2xl p-2 bg-gradient-to-br from-white/5 to-transparent"
              >
                 <div 
                     className="w-full h-full rounded-[20px] overflow-hidden relative group bg-[#0f172a]"
-                    style={{ transform: "translateZ(30px)" }}
+                  
+                    style={{ transform: !isMobile ? "translateZ(30px)" : "none" }}
                 >
                     <img 
                         src="/Hero/person.avif" 
                         alt="Nahid" 
+                        loading="lazy"
                         width={350}
                         height={480}
                         className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 grayscale-[20%] group-hover:grayscale-0 transition-all duration-500" 

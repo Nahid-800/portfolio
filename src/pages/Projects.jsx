@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaArrowRight, FaEye, FaLayerGroup } from 'react-icons/fa';
+import { FaGithub, FaEye, FaArrowRight, FaLayerGroup } from 'react-icons/fa';
 
 function Projects() {
     const [visibleProjects, setVisibleProjects] = useState(3);
@@ -67,15 +67,8 @@ function Projects() {
     };
 
     return (
-        <section className="relative w-full py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-[#020617] overflow-hidden" id="projects">
+        <section className="relative w-full py-20 md:py-32 px-4 sm:px-6 lg:px-8 bg-transparent overflow-hidden" id="projects">
             
-            {/* Global Background (Consistent) */}
-            <div className="absolute inset-0 z-0 pointer-events-none">
-                <div className="absolute top-[20%] right-0 w-[500px] h-[500px] bg-orange-600/10 rounded-full blur-[120px]"></div>
-                <div className="absolute bottom-[10%] left-0 w-[500px] h-[500px] bg-red-900/10 rounded-full blur-[120px]"></div>
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-            </div>
-
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
                 <motion.div 
@@ -99,10 +92,7 @@ function Projects() {
                 </motion.div>
 
                 {/* Projects Grid */}
-                <motion.div 
-                    layout
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <AnimatePresence mode='popLayout'>
                         {projectList.slice(0, visibleProjects).map((project) => (
                             <motion.div 
@@ -111,8 +101,9 @@ function Projects() {
                                 initial={{ opacity: 0, scale: 0.9, y: 50 }}
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 50 }}
-                                transition={{ duration: 0.5, delay: 0.1 }}
-                                className="group relative bg-slate-900/40 backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
+                                transition={{ duration: 0.5 }}
+                               
+                                className="group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
                             >
                                 {/* Image Container */}
                                 <div className="relative h-60 overflow-hidden">
@@ -120,9 +111,9 @@ function Projects() {
                                     <img 
                                         src={project.image} 
                                         alt={project.title} 
+                                        loading="lazy"
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-1"
                                     />
-                                    {/* Overlay Gradient */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90 z-20"></div>
                                     
                                     <div className="absolute top-4 right-4 z-30 bg-slate-900/80 backdrop-blur-md px-3 py-1 rounded-full border border-orange-500/30">
@@ -130,7 +121,6 @@ function Projects() {
                                     </div>
                                 </div>
 
-                                {/* Content */}
                                 <div className="p-6 pt-0 flex flex-col flex-1 relative z-20">
                                     <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-orange-400 transition-colors duration-300">
                                         {project.title}
@@ -140,7 +130,6 @@ function Projects() {
                                         {project.description}
                                     </p>
 
-                                    {/* Tech Stack */}
                                     <div className="flex flex-wrap gap-2 mb-8">
                                         {project.techStack.map((tech, index) => (
                                             <span key={index} className="text-[11px] font-semibold text-orange-200 bg-orange-500/10 px-2.5 py-1 rounded-md border border-orange-500/10">
@@ -149,7 +138,6 @@ function Projects() {
                                         ))}
                                     </div>
 
-                                    {/* Buttons */}
                                     <div className="flex items-center gap-4 mt-auto">
                                         <a href={project.liveLink} target="_blank" rel="noopener noreferrer" 
                                            className="flex-1 group/btn relative overflow-hidden rounded-lg bg-gradient-to-r from-orange-500 to-amber-600 p-[1px] shadow-lg hover:shadow-orange-500/20 transition-all duration-300">
@@ -169,16 +157,10 @@ function Projects() {
                             </motion.div>
                         ))}
                     </AnimatePresence>
-                </motion.div>
+                </div>
                 
-                {/* View More Button */}
                 {visibleProjects < projectList.length && (
-                    <motion.div 
-                        layout
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        className='flex justify-center mt-16'
-                    >
+                    <div className='flex justify-center mt-16'>
                         <button 
                             onClick={handleViewMore}
                             className="group relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-full bg-slate-800 border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]"
@@ -188,7 +170,7 @@ function Projects() {
                                 View More Projects <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                             </span>
                         </button>
-                    </motion.div>
+                    </div>
                 )}
             </div>
         </section>

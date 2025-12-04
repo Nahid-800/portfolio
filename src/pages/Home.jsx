@@ -9,13 +9,13 @@ import UserComment from './UserComment';
 import Footer from './Footer';
 import Workflow from './Workflow';
 import Skill from './Skill';
-import Projects from './Projects'; // <--- এখানে নাম ঠিক করা হয়েছে
+import Projects from './Projects';
 import { IoStar } from "react-icons/io5";
 
 function HomePage() {
   return (
     <div>
-      {/* Navbar এখন আর এখানে নেই */}
+   
 
       <div className='md:pt-0'>
         <Hero />
