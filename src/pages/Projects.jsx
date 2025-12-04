@@ -55,7 +55,6 @@ function Projects() {
         {
             id: 6,
             title: "Survey Jumper Tool",
-            
             description: "This is my first Paid Survey Bypass Tool. An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
             image: "/Projects/baul.avif",
             techStack: ["React", "Firebase", "Tailwind"],
@@ -64,21 +63,36 @@ function Projects() {
         }
     ];
 
-   
+    // --- FIX: Optimized Resize Handler (Debounce) ---
     useEffect(() => {
+        let timeoutId;
+
         const handleResize = () => {
-            if (window.innerWidth >= 768) {
-                setVisibleProjects(6); 
-            } else {
-                setVisibleProjects(3);
-            }
+            // Clear previous timer to stop rapid updates
+            clearTimeout(timeoutId);
+            
+            // Wait 200ms after zooming stops before updating state
+            timeoutId = setTimeout(() => {
+                if (window.innerWidth >= 768) {
+                    setVisibleProjects(6); 
+                } else {
+                    setVisibleProjects(3);
+                }
+            }, 200);
         };
 
-      
-        handleResize();
+        // Run once on mount
+        if (window.innerWidth >= 768) {
+            setVisibleProjects(6); 
+        } else {
+            setVisibleProjects(3);
+        }
 
         window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+            clearTimeout(timeoutId);
+        };
     }, []);
 
     const handleViewMore = () => {
@@ -121,7 +135,7 @@ function Projects() {
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 50 }}
                                 transition={{ duration: 0.5 }}
-                                className="group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
+                                className="group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col will-change-transform"
                             >
                                 {/* Image Container */}
                                 <div className="relative w-full h-auto overflow-hidden bg-slate-950">
@@ -135,12 +149,10 @@ function Projects() {
                                 </div>
 
                                 <div className="p-6 flex flex-col flex-1 relative z-20">
-                                    {/* Title Section Updated with Paid Badge logic */}
                                     <div className="flex items-center flex-wrap gap-2 mb-3 -mt-4 md:mt-0">
                                         <h3 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
                                             {project.title}
                                         </h3>
-                                        {/* Survey Jumper Tool (ID 6) এর জন্য Paid ব্যাজ */}
                                         {project.id === 6 && (
                                             <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide text-white bg-gradient-to-r from-emerald-500 to-green-600 shadow-[0_0_10px_rgba(16,185,129,0.4)] border border-emerald-400/30">
                                                 Paid
@@ -184,7 +196,6 @@ function Projects() {
                             onClick={handleViewMore}
                             className="group relative inline-flex items-center justify-center px-8 py-3 w-full sm:w-auto overflow-hidden font-bold text-white rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-orange-500/30"
                         >
-                           
                             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600"></span>
                             <span className="absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-white opacity-10 group-hover:rotate-90 ease"></span>
                             
