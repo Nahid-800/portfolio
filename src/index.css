@@ -63,3 +63,8 @@ html, body {
   0% { transform: rotate(0deg); }
   100%{ transform: rotate(360deg); } /* 'dg' এর বদলে 'deg' ঠিক করা হয়েছে */
 }
+#Nahid{
+   font-family: 'Great Vibes', cursive;
+            letter-spacing: 2px;
+            font-style: italic;
+}

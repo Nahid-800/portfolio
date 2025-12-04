@@ -13,7 +13,7 @@ function Curious() {
     };
 
     return (
-        // BG removed, using global
+      
         <section className='relative w-full py-20 md:py-32 overflow-hidden flex items-center justify-center bg-transparent'>
             
             <div className='max-w-6xl mx-auto px-6 lg:px-8 relative z-10'>

@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaGithub, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaPaperPlane, FaUser, FaRegEnvelope, FaRegCommentDots } from 'react-icons/fa';
 
 function Contact() {
-  // Animation Variants
+  
   const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: { 

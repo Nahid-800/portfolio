@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaEye, FaArrowRight, FaLayerGroup } from 'react-icons/fa';
 
 function Projects() {
+   
     const [visibleProjects, setVisibleProjects] = useState(3);
 
     const projectList = [
@@ -33,7 +34,6 @@ function Projects() {
             liveLink: "https://weathers-10.vercel.app/",
             codeLink: "#"
         },
-        
         {
             id: 4,
             title: "Crypto Hunter Dashboard",
@@ -55,13 +55,31 @@ function Projects() {
         {
             id: 6,
             title: "Survey Jumper Tool",
-            description: "An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
+            
+            description: "This is my first Paid Survey Bypass Tool. An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
             image: "public/Projects/baul.avif",
             techStack: ["React", "Firebase", "Tailwind"],
             liveLink: "#",
             codeLink: "#"
         }
     ];
+
+   
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                setVisibleProjects(6); 
+            } else {
+                setVisibleProjects(3);
+            }
+        };
+
+      
+        handleResize();
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     const handleViewMore = () => {
         setVisibleProjects((prevValue) => prevValue + 3);
@@ -103,32 +121,32 @@ function Projects() {
                                 animate={{ opacity: 1, scale: 1, y: 0 }}
                                 exit={{ opacity: 0, scale: 0.9, y: 50 }}
                                 transition={{ duration: 0.5 }}
-                               
                                 className="group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 flex flex-col"
                             >
                                 {/* Image Container */}
                                 <div className="relative w-full h-auto overflow-hidden bg-slate-950">
-                                    
-                                    {/* REMOVED: Dark overlay removed so image looks clearer/brighter */}
-                                    {/* <div className="absolute inset-0 bg-slate-900/20 z-10 ..."></div> */}
-                                    
                                     <img 
                                         src={project.image} 
                                         alt={project.title} 
                                         loading="lazy"
-                                        // ADDED: brightness-110 (makes default brighter) and group-hover:brightness-125 (extra pop on hover)
                                         className="w-full h-auto transition-transform duration-700 group-hover:scale-105 brightness-110 group-hover:brightness-125"
                                     />
-                                    
-                                    {/* REDUCED OPACITY: Changed from opacity-90 to opacity-60 so bottom is clearer */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-60 z-20"></div>
                                 </div>
 
                                 <div className="p-6 flex flex-col flex-1 relative z-20">
-                                    {/* Title Spacing: Mobile -mt-4 (Slightly up), Desktop mt-0 (Normal) */}
-                                    <h3 className="text-2xl font-bold text-white mb-3 -mt-4 md:mt-0 group-hover:text-orange-400 transition-colors duration-300">
-                                        {project.title}
-                                    </h3>
+                                    {/* Title Section Updated with Paid Badge logic */}
+                                    <div className="flex items-center flex-wrap gap-2 mb-3 -mt-4 md:mt-0">
+                                        <h3 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
+                                            {project.title}
+                                        </h3>
+                                        {/* Survey Jumper Tool (ID 6) এর জন্য Paid ব্যাজ */}
+                                        {project.id === 6 && (
+                                            <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide text-white bg-gradient-to-r from-emerald-500 to-green-600 shadow-[0_0_10px_rgba(16,185,129,0.4)] border border-emerald-400/30">
+                                                Paid
+                                            </span>
+                                        )}
+                                    </div>
                                     
                                     <p className="text-slate-400 text-sm mb-6 flex-1 line-clamp-3 leading-relaxed font-light">
                                         {project.description}
@@ -159,15 +177,18 @@ function Projects() {
                         ))}
                     </AnimatePresence>
                 </div>
-                
+              
                 {visibleProjects < projectList.length && (
-                    <div className='flex justify-center mt-16'>
+                    <div className='flex justify-center mt-12 md:hidden'>
                         <button 
                             onClick={handleViewMore}
-                            className="group relative inline-flex items-center justify-center px-8 py-3.5 overflow-hidden font-bold text-white rounded-full bg-slate-800 border border-white/10 transition-all duration-300 hover:border-orange-500/50 hover:shadow-[0_0_20px_rgba(249,115,22,0.3)]"
+                            className="group relative inline-flex items-center justify-center px-8 py-3 w-full sm:w-auto overflow-hidden font-bold text-white rounded-xl shadow-lg transition-all duration-300 hover:scale-[1.02] hover:shadow-orange-500/30"
                         >
-                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500/10 to-amber-500/10 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                            <span className="relative flex items-center gap-2">
+                           
+                            <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-600"></span>
+                            <span className="absolute bottom-0 right-0 block w-64 h-64 mb-32 mr-4 transition duration-500 origin-bottom-left transform rotate-45 translate-x-24 bg-white opacity-10 group-hover:rotate-90 ease"></span>
+                            
+                            <span className="relative flex items-center gap-3">
                                 View More Projects <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                             </span>
                         </button>

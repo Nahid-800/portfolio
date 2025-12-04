@@ -39,7 +39,7 @@ function Testimonials() {
 
     return (
        <section className='relative w-full py-20 md:py-32 bg-transparent overflow-hidden'>
-          {/* Background removed, using App.js global */}
+      
 
           <div className='max-w-7xl mx-auto px-6 md:px-10 relative z-10'>
               <motion.div 

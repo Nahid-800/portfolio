@@ -52,7 +52,7 @@ function Offer() {
                     <motion.div 
                         key={i} 
                         variants={cardVariants}
-                        // Optimized Card Background
+                      
                         className='group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-2xl p-8 hover:border-orange-500/30 transition-all duration-300 hover:-translate-y-2 overflow-hidden'
                     >
                         <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

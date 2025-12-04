@@ -10,11 +10,11 @@ function Skills() {
             levelText: "Expert",
             desc: "Building complex web apps with modern hooks & functional components.",
             icon: <SiReact />,
-            color: "text-sky-400", // Icon retains brand color
+            color: "text-sky-400",
             bgGlow: "group-hover:bg-sky-500/10",
             borderGlow: "group-hover:border-sky-500/50",
             
-            // Expert: Deep Green (Emerald)
+           
             badgeStyle: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
             barColor: "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]"
         },
@@ -24,11 +24,11 @@ function Skills() {
             levelText: "Advanced",
             desc: "Deep understanding of Asynchronous programming, DOM & Logic.",
             icon: <SiJavascript />,
-            color: "text-yellow-400", // Icon retains brand color
+            color: "text-yellow-400", 
             bgGlow: "group-hover:bg-yellow-500/10",
             borderGlow: "group-hover:border-yellow-500/50",
 
-            // Advanced: Lighter Green (Lime) - "Ektu kom green"
+          
             badgeStyle: "text-lime-400 bg-lime-500/10 border-lime-500/20",
             barColor: "bg-lime-400 shadow-[0_0_10px_rgba(163,230,53,0.4)]"
         },
@@ -38,11 +38,11 @@ function Skills() {
             levelText: "Expert",
             desc: "Rapidly building custom designs with utility-first CSS framework.",
             icon: <SiTailwindcss />,
-            color: "text-cyan-400", // Icon retains brand color
+            color: "text-cyan-400",
             bgGlow: "group-hover:bg-cyan-500/10",
             borderGlow: "group-hover:border-cyan-500/50",
 
-            // Expert: Deep Green (Emerald)
+            
             badgeStyle: "text-emerald-400 bg-emerald-500/10 border-emerald-500/20",
             barColor: "bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.4)]"
         },
@@ -52,11 +52,11 @@ function Skills() {
             levelText: "Intermediate",
             desc: "Server Side Rendering (SSR) and Static Site Generation (SSG).",
             icon: <SiNextdotjs />,
-            color: "text-white", // Icon retains brand color
+            color: "text-white",
             bgGlow: "group-hover:bg-white/10",
             borderGlow: "group-hover:border-white/50",
 
-            // Intermediate: White/Black (Monochrome) - "Sada Kala"
+          
             badgeStyle: "text-slate-300 bg-slate-800 border-slate-600",
             barColor: "bg-slate-200 shadow-[0_0_10px_rgba(255,255,255,0.2)]"
         }
@@ -122,9 +122,9 @@ function Skills() {
                                         {skill.desc}
                                     </p>
 
-                                    {/* Progress Bar Background */}
+                                 
                                     <div className="w-full h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
-                                        {/* Dynamic Progress Bar Color */}
+                                      
                                         <motion.div 
                                             initial={{ width: 0 }}
                                             whileInView={{ width: skill.level }}

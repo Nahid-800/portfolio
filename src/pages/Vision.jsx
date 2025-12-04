@@ -4,44 +4,44 @@ import { FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 
 function Vision() {
   return (
-    <section className='relative py-24 px-4 md:px-8 overflow-hidden bg-transparent'>
-       
+    <section className='relative py-10 md:py-24 px-4 overflow-hidden'>
+        
+      
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[300px] bg-orange-500/10 blur-[120px] rounded-full -z-10"></div>
 
         <div className="max-w-5xl mx-auto relative z-10">
             <motion.div 
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 
-              
-                className='relative bg-slate-900/95 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 rounded-[2.5rem] p-8 md:p-16 text-center shadow-2xl overflow-hidden group hover:border-orange-500/20 transition-colors duration-500'
+               
+                className='relative rounded-3xl p-6 md:p-20 text-center bg-transparent md:bg-white/[0.02] md:backdrop-blur-sm'
             >
-               
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]"></div>
-               
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-1/2 bg-orange-500/5 blur-[60px] rounded-full"></div>
+              
+                <FaQuoteLeft className="absolute top-0 left-0 md:top-10 md:left-10 text-xl md:text-6xl text-white/5 md:text-white/[0.03]" />
+                <FaQuoteRight className="absolute bottom-0 right-0 md:bottom-10 md:right-10 text-xl md:text-6xl text-white/5 md:text-white/[0.03]" />
 
-                <FaQuoteLeft className="absolute top-10 left-10 text-8xl text-white/5 -z-10 transform -translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
-                <FaQuoteRight className="absolute bottom-10 right-10 text-8xl text-white/5 -z-10 transform translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700" />
-
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-500/20 bg-orange-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(249,115,22,0.1)] mb-8">
-                    <span className="flex h-2 w-2 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                    </span>
-                    <span className="text-orange-400 text-xs font-bold tracking-[0.2em] uppercase">
-                        My Philosophy
+              
+                <div className="inline-flex items-center gap-2 mb-6 md:mb-10 opacity-80">
+                    <span className="h-1.5 w-1.5 md:h-2 md:w-2 rounded-full bg-orange-500/80"></span>
+                    <span className="text-orange-400/90 text-[10px] md:text-sm font-medium tracking-[0.2em] uppercase">
+                        Philosophy
                     </span>
                 </div>
 
-                <h2 className='text-white/90 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight max-w-4xl mx-auto tracking-tight relative z-10'>
-                    Crafting <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-amber-500 font-bold">intuitive</span> and <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 to-red-500 font-bold">engaging</span> digital experiences with clean, user-focused code.
+            
+                <h2 className='text-slate-300/90 text-lg sm:text-xl md:text-4xl lg:text-5xl font-normal md:font-light leading-relaxed md:leading-tight max-w-4xl mx-auto tracking-wide relative z-10'>
+                    Crafting <span className="text-orange-400/90 font-medium md:font-normal">intuitive</span> and <span className="text-orange-400/90 font-medium md:font-normal">engaging</span> digital experiences with clean code.
                 </h2>
                 
-                <div className="mt-10 flex flex-col items-center justify-center gap-3">
-                    <div className="w-16 h-1 rounded-full bg-gradient-to-r from-transparent via-orange-500/50 to-transparent"></div>
-                    <p className="text-slate-500 font-serif italic text-lg">" Simplicity is the soul of efficiency "</p>
+              
+                <div className="mt-8 md:mt-16 flex flex-col items-center justify-center gap-3 md:gap-5">
+                    <div className="w-8 md:w-16 h-[1px] bg-white/10 md:bg-white/20"></div>
+                    <p className="text-slate-500 text-xs md:text-lg italic font-light tracking-wider">
+                        " Simplicity is the soul of efficiency "
+                    </p>
                 </div>
 
             </motion.div>

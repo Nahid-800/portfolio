@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaReact, FaDownload, FaArrowRight, FaLinkedinIn, FaFacebookF, FaFigma } from 'react-icons/fa';
 import { SiJavascript, SiRedux, SiNextdotjs } from 'react-icons/si';
+import '../index.css';
 
 // --- DATA ---
 const techSlides = [
@@ -147,7 +149,7 @@ const Hero = () => {
 
                 Hi, I'm <br />
                 <span className="relative inline-block z-10 mt-2">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-500 to-red-500 z-10 relative px-1 pb-1">
+                  <span id='Nahid' className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-500 to-red-500 z-10 relative px-1 pb-1">
                     Nahid
                   </span>
                   <svg className="absolute -bottom-3 left-0 w-full h-4 text-orange-500/40 -z-10" viewBox="0 0 200 9" fill="none">
@@ -243,7 +245,7 @@ const Hero = () => {
                     style={{ transform: !isMobile ? "translateZ(30px)" : "none" }}
                 >
                     <img 
-                        src="/Hero/person.avif" 
+                        src="/Hero/Nahid.avif" 
                         alt="Nahid" 
                         loading="lazy"
                         width={350}
