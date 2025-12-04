@@ -3,33 +3,71 @@
 @tailwind components; 
 @tailwind utilities;
 
+/* Fonts Import */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap'); /* Nahid লোগোর ফন্টের জন্য */
 
 .font-poppins {
   font-family: 'Poppins', sans-serif;
 }
 
 /* ========================================= */
-/* গ্লোবাল সেটিংস (Main Fixes) */
+/* গ্লোবাল সেটিংস (Global Fixes) */
 /* ========================================= */
 html, body {
   width: 100%;
   margin: 0;
   padding: 0;
   
-  /* 1. সাদা অংশ দূর করার জন্য মেইন কালার */
+  /* 1. ব্যাকগ্রাউন্ড কালার */
   background-color: #020617;
   
-  /* 2. মোবাইলে স্ক্রল বাউন্স বন্ধ করা */
+  /* 2. স্ক্রল বাউন্স এবং ল্যাগ ফিক্স */
   overscroll-behavior-y: none;
-  
-  /* 3. ডানে-বামে অনাকাঙ্ক্ষিত স্ক্রল বন্ধ করা */
   overflow-x: hidden;
-  
-  /* 4. মোবাইলে মাখনের মতো স্মুথ স্ক্রলিং (Lag fix) */
   -webkit-overflow-scrolling: touch;
+
+  /* 3. ফন্ট এবং রেন্ডারিং স্মুথনেস (Performance Fix) */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
+/* ========================================= */
+/* Performance Optimization (Hang/Slow Fix) */
+/* ========================================= */
+/* এই ক্লাসগুলো জুম করার সময় GPU ব্যবহার করবে, ফলে সাইট হ্যাং করবে না */
+.backdrop-blur-md,
+.backdrop-blur-xl,
+.backdrop-blur-3xl,
+.blur-xl,
+.blur-2xl,
+.blur-3xl,
+.will-change-transform {
+    will-change: transform, opacity;
+    transform: translateZ(0); /* Hardware Acceleration Force */
+    backface-visibility: hidden;
+}
+
+/* ========================================= */
+/* Custom Scrollbar (ডার্ক থিমের সাথে মানানসই) */
+/* ========================================= */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #020617;
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #f97316; /* Orange hover */
+}
+
+/* ========================================= */
+/* আপনার পুরনো কাস্টম স্টাইলস */
 /* ========================================= */
 
 .NavLinkStyle{
@@ -54,17 +92,18 @@ html, body {
   height: 450px;
 }
 
-/* অ্যানিমেশন ফিক্স */
+/* অ্যানিমেশন */
 .ani{
-  animation: auly 3s ease-in-out infinite; /* infinite যোগ করা হয়েছে যাতে ঘুরতে থাকে */
+  animation: auly 3s ease-in-out infinite; 
 }
 
 @keyframes auly{
   0% { transform: rotate(0deg); }
-  100%{ transform: rotate(360deg); } /* 'dg' এর বদলে 'deg' ঠিক করা হয়েছে */
+  100%{ transform: rotate(360deg); } 
 }
+
 #Nahid{
    font-family: 'Great Vibes', cursive;
-            letter-spacing: 2px;
-            font-style: italic;
+   letter-spacing: 2px;
+   font-style: italic;
 }
