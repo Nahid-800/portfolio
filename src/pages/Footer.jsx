@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaFacebookF, FaTwitter, FaYoutube, FaLinkedinIn, FaInstagram, FaHeart } from 'react-icons/fa';
+import '../index.css';
 
 const LinkList = ({ title, list }) => (
     <div className="flex flex-col gap-4">
@@ -56,7 +57,7 @@ function Footer() {
                 </svg>
             </div>
             
-                            <h2 className="text-2xl font-bold text-white tracking-wide">Nahid<span className="text-orange-500"> Developer</span></h2>
+                            <h2 className=" logoText text-2xl font-bold text-white tracking-wide">Nahid<span className="text-orange-500"> Developer</span></h2>
                         </div>
                         <p className="text-slate-400 text-base leading-relaxed max-w-sm font-light">
                             Crafting digital experiences with passion and precision.

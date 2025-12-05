@@ -1,9 +1,12 @@
+
+
 import React, { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { 
   FiMenu, FiX, FiHome, FiLayers, FiUser, FiMail, FiBriefcase, FiArrowUpRight 
 } from "react-icons/fi";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import "../index.css";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,8 +56,8 @@ const Navbar = () => {
             </div>
             
             <div className="flex flex-col">
-                <span className="text-xl font-bold text-white tracking-tight leading-none group-hover:text-orange-100 transition-colors font-sans">
-                  NAHID<span className="text-orange-500">.</span>
+                <span className="brand-logo text-xl text-white leading-none group-hover:text-orange-100 transition-colors">
+                  NAHID <span className="text-orange-500">.</span>
                 </span>
                 <span className="text-[10px] text-slate-400 font-medium tracking-[0.3em] uppercase opacity-80 group-hover:opacity-100 transition-opacity">
                    Portfolio

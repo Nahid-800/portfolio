@@ -149,7 +149,7 @@ const Hero = () => {
 
                 Hi, I'm <br />
                 <span className="relative inline-block z-10 mt-2">
-                  <span id='Nahid' className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-500 to-red-500 z-10 relative px-1 pb-1">
+                  <span className=" Nahid text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-500 to-red-500 z-10 relative px-1 pb-1">
                     Nahid
                   </span>
                   <svg className="absolute -bottom-3 left-0 w-full h-4 text-orange-500/40 -z-10" viewBox="0 0 200 9" fill="none">
