@@ -8,7 +8,7 @@ export default defineConfig({
     tailwindcss()
   ],
   server: {
-    host: true,   // এই লাইনটাই মোবাইলে অ্যাক্সেস করতে দেবে
+    host: true, 
     port: 5173
   }
 })

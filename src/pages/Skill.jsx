@@ -113,7 +113,7 @@ function Skills() {
                                             {skill.title}
                                         </h3>
                                         
-                                        {/* Dynamic Badge Color based on Level */}
+                                      
                                         <span className={`text-xs font-bold px-2 py-1 rounded border ${skill.badgeStyle}`}>
                                             {skill.levelText}
                                         </span>

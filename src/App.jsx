@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navber from "./pages/Navber"; 
 import HomePage from "./pages/Home";
-import Contact from "./pages/Contact";
 import About from "./pages/About";
+import Services from './pages/Services';
 
 
 const GlobalBackground = () => (
@@ -27,8 +27,10 @@ function App() {
       <main className="w-full min-h-screen text-white relative z-10">
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/contact" element={<Contact />} />
+
             <Route path="/about" element={<About/>} /> 
+
+            <Route path="/Services" element={<Services/>} /> 
           </Routes>
       </main>
       

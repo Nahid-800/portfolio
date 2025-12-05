@@ -75,7 +75,7 @@ function Testimonials() {
                         <motion.div 
                             key={index} 
                             variants={itemVariant}
-                            // Optimized Card Background
+                          
                             className='group relative bg-slate-900/90 md:bg-slate-900/40 md:backdrop-blur-md border border-white/5 p-8 rounded-2xl overflow-hidden transition-all duration-500 hover:border-orange-500/30 hover:-translate-y-2'
                         >
                            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>

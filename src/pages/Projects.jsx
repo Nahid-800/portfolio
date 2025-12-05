@@ -13,8 +13,8 @@ function Projects() {
             description: "A full-featured e-commerce platform with cart functionality, payment gateway integration, and user dashboard.",
             image: "/Projects/e-commerce.avif",
             techStack: ["React", "Tailwind", "Redux"],
-            liveLink: "#",
-            codeLink: "#"
+            liveLink: "https://e-commerce-10.vercel.app/",
+            codeLink: "https://github.com/NahidAhmed-12/e-commerce.git"
         },
         {
             id: 2,
@@ -22,8 +22,8 @@ function Projects() {
             description: "A visually appealing and responsive landing page designed for a floral shop, featuring elegant animations and product showcases.",
             image: "/Projects/flower.avif",
             techStack: ["React", "Swing Library", "Tailwind"],
-            liveLink: "#",
-            codeLink: "#"
+            liveLink: "https://flower-10s.vercel.app/",
+            codeLink: "https://github.com/NahidAhmed-12/Flower.git"
         },
         {
             id: 3,
@@ -32,7 +32,7 @@ function Projects() {
             image: "/Projects/weathers.avif",
             techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "https://weathers-10.vercel.app/",
-            codeLink: "#"
+            codeLink: "https://github.com/NahidAhmed-12/Weather.git"
         },
         {
             id: 4,
@@ -41,7 +41,7 @@ function Projects() {
             image: "/Projects/crypto.avif",
             techStack: ["React.js", "API", "Tailwind"],
             liveLink: "https://crypto-10.vercel.app/",
-            codeLink: "#"
+            codeLink: "https://github.com/NahidAhmed-12/crypto-.git"
         },
         {
             id: 5,
@@ -50,7 +50,7 @@ function Projects() {
             image: "/Projects/ai-image.avif",
             techStack: ["React", "Pollinations.ai API", "Tailwind"],
             liveLink: "https://ai-image-10.vercel.app/",
-            codeLink: "#"
+            codeLink: "https://github.com/NahidAhmed-12/AI-image-Generate.git"
         },
         {
             id: 6,
@@ -59,7 +59,7 @@ function Projects() {
             description: "This is my first Paid Survey Bypass Tool. An interactive survey management tool that allows users to navigate through questionnaires and submit responses efficiently.",
             image: "/Projects/baul.avif",
             techStack: ["React", "Firebase", "Tailwind"],
-            liveLink: "#",
+            liveLink: "https://baul.vercel.app/",
             codeLink: "#"
         }
     ];
@@ -135,12 +135,12 @@ function Projects() {
                                 </div>
 
                                 <div className="p-6 flex flex-col flex-1 relative z-20">
-                                    {/* Title Section Updated with Paid Badge logic */}
+                                
                                     <div className="flex items-center flex-wrap gap-2 mb-3 -mt-4 md:mt-0">
                                         <h3 className="text-2xl font-bold text-white group-hover:text-orange-400 transition-colors duration-300">
                                             {project.title}
                                         </h3>
-                                        {/* Survey Jumper Tool (ID 6) এর জন্য Paid ব্যাজ */}
+                                       
                                         {project.id === 6 && (
                                             <span className="inline-flex items-center justify-center px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide text-white bg-gradient-to-r from-emerald-500 to-green-600 shadow-[0_0_10px_rgba(16,185,129,0.4)] border border-emerald-400/30">
                                                 Paid
