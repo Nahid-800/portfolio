@@ -63,7 +63,6 @@ const Hero = () => {
   const currentYear = new Date().getFullYear();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  // Performance: Reduced stiffness/damping for smoother feel
   const mouseX = useSpring(x, { stiffness: 25, damping: 30 });
   const mouseY = useSpring(y, { stiffness: 25, damping: 30 });
 
@@ -71,10 +70,8 @@ const Hero = () => {
   const rectRef = useRef(null);
   const isHovering = useRef(false);
   
-  // Mobile check state
   const [isMobile, setIsMobile] = useState(true);
 
-  // --- SCROLL FUNCTION FOR PROJECTS ---
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
@@ -83,8 +80,8 @@ const Hero = () => {
   };
 
   useEffect(() => {
-     
-      const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+      // Breakpoint remains at 768px for Phone Desktop Site compatibility
+      const checkMobile = () => setIsMobile(window.innerWidth < 768);
       checkMobile();
       window.addEventListener('resize', checkMobile);
       return () => window.removeEventListener('resize', checkMobile);
@@ -116,21 +113,28 @@ const Hero = () => {
 
   return (
  
-    <div className="relative w-full min-h-screen bg-transparent text-white overflow-hidden font-sans selection:bg-orange-500/30 selection:text-orange-100">
+    <div className="relative w-full text-white overflow-hidden font-sans selection:bg-orange-500/30 selection:text-orange-100">
       
-      <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 pt-32 pb-10 lg:pt-28 relative z-10 gap-12 lg:gap-0">
+      {/* 
+         ADJUSTMENTS MADE:
+         1. pt-28 (Mobile) -> Keeps it safe from Navbar on phone.
+         2. lg:pt-20 (PC) -> Reduced from pt-36. This brings the content UP on PC.
+            Since 'items-center' is active on Desktop, it will center nicely without being pushed down.
+         3. md:flex-row -> Ensures "Phone Desktop Site" works perfectly.
+      */}
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-center lg:justify-between h-auto lg:min-h-screen px-6 pt-28 pb-10 lg:pt-20 lg:pb-0 relative z-10 gap-8 lg:gap-0">
         
    
         <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col justify-center w-full lg:w-1/2 text-center lg:text-left z-20 relative"
+            className="flex flex-col justify-center w-full md:w-1/2 text-center md:text-left z-20 relative"
         >
              <div className="space-y-4 relative z-10">
               
               {/* Badge */}
-              <div className="flex justify-center lg:justify-start">
+              <div className="flex justify-center md:justify-start">
                 <div className="relative inline-flex items-center gap-2 px-4 py-2 rounded-full border border-orange-500/30 bg-orange-500/5 backdrop-blur-sm shadow-[0_0_15px_rgba(249,115,22,0.1)] hover:border-orange-500/60 transition-colors duration-300">
                     <span className="relative flex h-2 w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
@@ -159,7 +163,7 @@ const Hero = () => {
                 </span>
               </h1>
               
-              <div className="text-slate-400 text-lg sm:text-2xl font-light min-h-[40px] flex items-center justify-center lg:justify-start whitespace-nowrap">
+              <div className="text-slate-400 text-lg sm:text-2xl font-light min-h-[40px] flex items-center justify-center md:justify-start whitespace-nowrap">
                  <span>I am a&nbsp;</span>
                  <span className="font-semibold text-slate-100 text-left">
                     <TypeAnimation
@@ -177,12 +181,12 @@ const Hero = () => {
                  </span>
               </div>
 
-              <p className="text-slate-400 text-base sm:text-lg max-w-md mx-auto lg:mx-0 leading-relaxed font-light">
+              <p className="text-slate-400 text-base sm:text-lg max-w-md mx-auto md:mx-0 leading-relaxed font-light">
                 Crafting pixel-perfect web experiences with a warm touch. I transform complex problems into simple, beautiful, and intuitive designs.
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-5 relative z-10">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-5 relative z-10">
                 <button 
                     onClick={scrollToProjects}
                     className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400 text-white font-bold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg flex items-center justify-center gap-2"
@@ -200,7 +204,7 @@ const Hero = () => {
                 </Link>
             </div>
 
-            <div className="flex items-center justify-center lg:justify-start gap-8 pt-4 relative z-10">
+            <div className="flex items-center justify-center md:justify-start gap-8 pt-4 relative z-10">
                <div className="flex gap-5">
                   {[FaGithub, FaLinkedinIn, FaFacebookF].map((Icon, i) => (
                     <a key={i} href="#" className="text-slate-400 hover:text-orange-400 transition-colors text-xl transform hover:scale-110">
@@ -222,7 +226,7 @@ const Hero = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="w-full lg:w-1/2 flex justify-center lg:justify-end relative perspective-1000 z-30"
+            className="w-full md:w-1/2 flex justify-center md:justify-end relative perspective-1000 z-30"
           
             onMouseEnter={!isMobile ? handleMouseEnter : undefined}
             onMouseMove={!isMobile ? handleMouseMove : undefined}

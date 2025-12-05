@@ -6,19 +6,19 @@ function Testimonials() {
     const testimonials = [
         {
             comment: "Working with them was a fantastic experience. They delivered a high-quality product on schedule. Excellent communication throughout.",
-            profileImg: "/Clients Say/client-1.jpg", 
+            profileImg: "/Clients Say/client-1.avif", 
             userName: "Sarah Johnson",
             userTitle: "Project Manager, Tech Solutions"
         },
         {
             comment: "Perfectly translated my Figma designs into a pixel-perfect, interactive web application. Highly recommended for attention to detail!",
-            profileImg: "/Clients Say/client-2.jpg", 
+            profileImg: "/Clients Say/client-2.avif", 
             userName: "Michael Chen",
             userTitle: "Lead UI/UX Designer"
         },
         {
             comment: "Built a fast and responsive website and provided great suggestions to improve the user experience. Invaluable technical expertise.",
-            profileImg: "/Clients Say/client-3.jpg", 
+            profileImg: "/Clients Say/client-3.avif", 
             userName: "David Lee",
             userTitle: "Founder, Innovate Co."
         }
