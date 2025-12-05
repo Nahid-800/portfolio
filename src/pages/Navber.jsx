@@ -1,7 +1,5 @@
-
-
-import React, { useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { 
   FiMenu, FiX, FiHome, FiLayers, FiUser, FiMail, FiBriefcase, FiArrowUpRight 
 } from "react-icons/fi";
@@ -20,17 +18,55 @@ const Navbar = () => {
 
   const navLinks = [
     { title: "Home", path: "/", icon: <FiHome /> },
-    { title: "Projects", path: "/projects", icon: <FiLayers /> },
+    { title: "Projects", path: "/#projects", icon: <FiLayers /> }, 
     { title: "About", path: "/about", icon: <FiUser /> },
     { title: "Contact", path: "/contact", icon: <FiMail /> },
   ];
+
+  // ফিক্স ১: অন্য পেজ থেকে হোম পেজে আসার পর স্ক্রল লজিক
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.replace("#", "");
+      const element = document.getElementById(elementId);
+      
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 500); // পেজ লোড হওয়ার জন্য সময় একটু বাড়ানো হয়েছে
+      }
+    }
+  }, [location]);
+
+  // ফিক্স ২: মোবাইল মেনু এবং পিসি স্ক্রল ফিক্স
+  const handleNavClick = (e, path) => {
+    setIsOpen(false); // মেনু বন্ধ করার কমান্ড আগে দেওয়া হলো
+
+    // যদি হ্যাশ লিংক হয় (যেমন Projects)
+    if (path.includes("#")) {
+      // যদি বর্তমানে হোম পেজেই থাকেন
+      if (location.pathname === "/") {
+        e.preventDefault(); 
+        const elementId = path.split("#")[1];
+        const element = document.getElementById(elementId);
+        
+        if (element) {
+          // মোবাইলের জন্য এখানে ৩00ms ডিলে দেওয়া হয়েছে যাতে মেনু বন্ধ হওয়ার পর স্ক্রল হয়
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 300);
+        }
+      }
+      // অন্য পেজে থাকলে Link কম্পোনেন্ট অটোমেটিক কাজ করবে (useEffect হ্যান্ডেল করবে)
+    } else {
+      window.scrollTo(0, 0);
+    }
+  };
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ type: "spring", stiffness: 100, damping: 20 }}
-      // Optimization: Mobile blur reduced, Desktop blur kept high
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${
         scrolled
           ? "bg-[#020617]/90 md:bg-[#020617]/75 backdrop-blur-md md:backdrop-blur-[30px] border-b border-orange-500/10 shadow-[0_10px_30px_-10px_rgba(2,6,23,0.5)] py-3"
@@ -68,11 +104,12 @@ const Navbar = () => {
           {/* DESKTOP MENU */}
           <div className="hidden md:flex items-center gap-1 bg-white/5 px-1.5 py-1.5 rounded-full border border-white/5 backdrop-blur-md shadow-inner">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
+              const isActive = location.pathname === link.path || (link.path.includes("#") && location.hash === link.path.split("/")[1]);
               return (
                 <Link
                   key={link.title}
                   to={link.path}
+                  onClick={(e) => handleNavClick(e, link.path)} 
                   className="relative px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300"
                 >
                   {isActive && (
@@ -120,10 +157,8 @@ const Navbar = () => {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
-            // Optimization: Lower blur for mobile menu
             className="md:hidden overflow-hidden bg-[#020617]/95 backdrop-blur-md border-b border-orange-500/20 relative shadow-2xl"
           >
-            {/* Removed heavy blur blob for mobile, kept simple gradient */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 rounded-full pointer-events-none"></div>
 
             <div className="px-4 pt-4 pb-8 flex flex-col gap-3 relative z-10">
@@ -138,7 +173,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={link.path}
-                      onClick={() => setIsOpen(false)}
+                      onClick={(e) => handleNavClick(e, link.path)} 
                       className={`group flex items-center justify-between p-4 rounded-2xl border transition-all duration-300 ${
                         isActive
                           ? "bg-gradient-to-r from-orange-500/10 to-transparent border-orange-500/30 shadow-[inset_0_0_20px_rgba(249,115,22,0.05)]"

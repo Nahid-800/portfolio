@@ -1,5 +1,6 @@
-
 import React, { useState, useEffect, useRef, memo, useCallback } from 'react';
+// Link ইমপোর্ট করা হয়েছে যাতে Contact পেজে নেভিগেট করা যায়
+import { Link } from 'react-router-dom';
 import { TypeAnimation } from 'react-type-animation';
 import { motion, useMotionValue, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaReact, FaDownload, FaArrowRight, FaLinkedinIn, FaFacebookF, FaFigma } from 'react-icons/fa';
@@ -63,8 +64,9 @@ const Hero = () => {
   const currentYear = new Date().getFullYear();
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const mouseX = useSpring(x, { stiffness: 30, damping: 30 });
-  const mouseY = useSpring(y, { stiffness: 30, damping: 30 });
+  // Performance: Reduced stiffness/damping for smoother feel
+  const mouseX = useSpring(x, { stiffness: 25, damping: 30 });
+  const mouseY = useSpring(y, { stiffness: 25, damping: 30 });
 
   const cardRef = useRef(null);
   const rectRef = useRef(null);
@@ -73,7 +75,7 @@ const Hero = () => {
   // Mobile check state
   const [isMobile, setIsMobile] = useState(true);
 
-  // --- SCROLL FUNCTION ---
+  // --- SCROLL FUNCTION FOR PROJECTS ---
   const scrollToProjects = () => {
     const projectsSection = document.getElementById('projects');
     if (projectsSection) {
@@ -83,6 +85,7 @@ const Hero = () => {
 
   useEffect(() => {
       // Check if device is mobile to disable heavy tilt effects
+      // Increased breakpoint to include tablets for better performance
       const checkMobile = () => setIsMobile(window.innerWidth < 1024);
       checkMobile();
       window.addEventListener('resize', checkMobile);
@@ -119,7 +122,7 @@ const Hero = () => {
       
       <div className="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center justify-between h-full min-h-screen px-6 pt-32 pb-10 lg:pt-28 relative z-10 gap-12 lg:gap-0">
         
-
+        {/* LEFT SECTION (TEXT) */}
         <motion.div 
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -189,10 +192,14 @@ const Hero = () => {
                     View My Work 
                     <FaArrowRight className="-rotate-45 group-hover:rotate-0 transition-transform duration-300" />
                 </button>
-                <button className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg border border-slate-700 hover:border-orange-500/50 bg-slate-800/50 hover:bg-slate-800 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm group">
+                {/* Contact Me বাটনটি এখন Link এ পরিবর্তন করা হয়েছে */}
+                <Link 
+                    to="/contact"
+                    className="relative w-full sm:w-auto px-8 py-3.5 rounded-lg border border-slate-700 hover:border-orange-500/50 bg-slate-800/50 hover:bg-slate-800 text-white font-medium transition-all duration-300 flex items-center justify-center gap-2 backdrop-blur-sm group"
+                >
                     Contact Me 
                     <FaDownload className="text-sm text-slate-400 group-hover:text-orange-400 transition-colors" />
-                </button>
+                </Link>
             </div>
 
             <div className="flex items-center justify-center lg:justify-start gap-8 pt-4 relative z-10">
@@ -212,7 +219,7 @@ const Hero = () => {
         </motion.div>
 
 
-
+        {/* RIGHT SECTION (IMAGE) */}
         <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -224,33 +231,43 @@ const Hero = () => {
             onMouseLeave={!isMobile ? handleMouseLeave : undefined}
             ref={cardRef}
         >
+             {/* Background Effects - Optimized for Mobile */}
              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] -z-10 pointer-events-none flex items-center justify-center">
-                 <div className="absolute w-[350px] h-[350px] bg-orange-500/20 rounded-full blur-[80px]"></div>
-                 {/* Reduced spin duration for performance */}
-                 <div className="absolute w-[400px] h-[400px] border border-orange-500/10 rounded-full animate-[spin_15s_linear_infinite] border-dashed will-change-transform"></div>
+                 <div className="absolute w-[350px] h-[350px] bg-orange-500/20 rounded-full blur-[60px] md:blur-[80px]"></div>
+                 {/* Only animate spin heavily on non-mobile devices to prevent hang */}
+                 <div className={`absolute w-[400px] h-[400px] border border-orange-500/10 rounded-full ${isMobile ? '' : 'animate-[spin_15s_linear_infinite]'} border-dashed will-change-transform`}></div>
                  <div className="absolute inset-0 bg-[radial-gradient(#f97316_1px,transparent_1px)] [background-size:20px_20px] opacity-20 mask-image-radial-gradient"></div>
              </div>
 
-             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900 p-3 rounded-xl border border-orange-500/30 shadow-xl" style={{ willChange: 'transform' }}><FaReact className="text-3xl animate-spin-slow"/></motion.div>
-             <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl" style={{ willChange: 'transform' }}><SiRedux className="text-3xl"/></motion.div>
+             <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute -top-6 right-10 z-40 text-orange-400 bg-slate-900 p-3 rounded-xl border border-orange-500/30 shadow-xl will-change-transform"><FaReact className="text-3xl animate-spin-slow"/></motion.div>
+             <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }} className="absolute bottom-16 -left-6 z-40 text-amber-400 bg-slate-900 p-3 rounded-xl border border-amber-500/30 shadow-xl will-change-transform"><SiRedux className="text-3xl"/></motion.div>
 
+             {/* MAIN IMAGE CARD */}
+             {/* Added floating animation on top of tilt */}
              <motion.div 
-               
+                // Floating Animation Implementation (Optimized)
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                
                 style={!isMobile ? { rotateX, rotateY, transformStyle: "preserve-3d" } : {}}
-                className="relative w-[300px] h-[420px] sm:w-[350px] sm:h-[480px] rounded-[24px] border border-white/10 shadow-2xl p-2 bg-gradient-to-br from-white/5 to-transparent"
+                className="relative w-[300px] h-[420px] sm:w-[350px] sm:h-[480px] rounded-[24px] border border-white/10 shadow-2xl p-2 bg-gradient-to-br from-white/5 to-transparent will-change-transform"
              >
                 <div 
                     className="w-full h-full rounded-[20px] overflow-hidden relative group bg-[#0f172a]"
-                  
                     style={{ transform: !isMobile ? "translateZ(30px)" : "none" }}
                 >
+                    {/* UI UPDATE: Added brightness-110 for mobile only */}
                     <img 
                         src="/Hero/Nahid.avif" 
                         alt="Nahid" 
-                        loading="lazy"
+                        loading="eager" // Changed to eager for hero image
                         width={350}
                         height={480}
-                        className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 grayscale-[20%] group-hover:grayscale-0 transition-all duration-500" 
+                        className="w-full h-full object-cover object-top 
+                                   opacity-90 group-hover:opacity-100 
+                                   grayscale-[20%] group-hover:grayscale-0 
+                                   brightness-110 lg:brightness-100 
+                                   transition-all duration-500 will-change-transform" 
                     />
                     
                     <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent opacity-90"></div>

@@ -39,7 +39,7 @@ function About() {
             
             <div className="relative z-10 p-2 bg-gradient-to-b from-cyan-500/20 to-transparent rounded-2xl backdrop-blur-sm">
                 <img 
-                  src="/person.webp" 
+                  src="/Hero/Nahid.avif" 
                   alt="Nahid" 
                   className="w-full max-w-[350px] md:max-w-[400px] rounded-xl shadow-2xl border border-white/10"
                 />
