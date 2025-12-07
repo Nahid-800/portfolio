@@ -30,14 +30,14 @@ html, body {
 }
 
 .headerlogof{
-font-family: "Akronim", system-ui;
+ font-family: "Moo Lah Lah", sans-serif;
   font-weight: 400;
   font-style: normal;
 
 }
 
 .headerlogo{
-font-family: "Akronim", system-ui;
+ font-family: "Moo Lah Lah", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -51,9 +51,10 @@ font-family: "Akronim", system-ui;
 
 
 .Nahid{
-font-family: "Carattere", cursive;
+font-family: "Birthstone", cursive;
   font-weight: 400;
   font-style: normal;
+font-size: larger;
 
 }
 
