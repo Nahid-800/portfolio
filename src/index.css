@@ -60,6 +60,24 @@ html, body {
   0% { transform: rotate(0deg); }
   100%{ transform: rotate(360deg); } 
 }
+
+.headerlogo{
+  font-family: "Lemonada", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;  
+}
+
+.headername{
+font-family: "Lemonada", cursive;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+  font-style: italic;
+}
+
+
+
 .Nahid{
    font-family: 'Great Vibes', cursive;
    letter-spacing: 2px;
