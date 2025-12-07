@@ -112,7 +112,7 @@ const Navbar = () => {
                   {isActive && (
                     <motion.div
                       layoutId="desktopNav"
-                      // Active state: A subtle glass box instead of full orange
+                     
                       className="absolute inset-0 bg-white/10 rounded-lg border border-white/5"
                       transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                     />

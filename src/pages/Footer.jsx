@@ -48,15 +48,14 @@ function Footer() {
                     
                     <div className="lg:col-span-5 space-y-6">
                         <div className="flex items-center gap-3">
-                             <div className="relative w-11 h-11 flex items-center justify-center">
-                <div className="absolute inset-0 bg-orange-500/30 blur-xl rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full relative z-10 drop-shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                    <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 17L12 22L22 17" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M2 12L12 17L22 12" stroke="#fbbf24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+
+
+           
+
+    <div className="headerlogof w-9 h-9 bg-orange-400 rounded-lg flex items-center justify-center transform group-hover:rotate-45 transition-transform duration-500 ease-out shadow-lg shadow-orange-500/20">
+                <span className="text-white font-bold text-xl -rotate-45 group-hover:rotate-0 transition-transform duration-500">N</span>
             </div>
-            
+
                             <h2 className=" logoText text-2xl font-bold text-white tracking-wide">Nahid<span className="text-orange-500"> Developer</span></h2>
                         </div>
                         <p className="text-slate-400 text-base leading-relaxed max-w-sm font-light">
