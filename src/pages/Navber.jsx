@@ -104,7 +104,11 @@ const Navbar = () => {
           
           <div className="hidden md:flex items-center gap-1 bg-white/5 px-1.5 py-1.5 rounded-full border border-white/5 backdrop-blur-md shadow-inner">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.path || (link.path.includes("#") && location.hash === link.path.split("/")[1]);
+              
+              const isActive = link.path.includes("#")
+                ? location.hash === "#" + link.path.split("#")[1]
+                : location.pathname === link.path && location.hash === "";
+
               return (
                 <Link
                   key={link.title}
@@ -165,7 +169,11 @@ const Navbar = () => {
 
             <div className="px-4 pt-4 pb-8 flex flex-col gap-3 relative z-10">
               {navLinks.map((link, idx) => {
-                 const isActive = location.pathname === link.path;
+                 // --- UPDATED LOGIC FOR MOBILE HERE TOO ---
+                 const isActive = link.path.includes("#")
+                    ? location.hash === "#" + link.path.split("#")[1]
+                    : location.pathname === link.path && location.hash === "";
+                    
                  return (
                   <motion.div
                     key={link.title}

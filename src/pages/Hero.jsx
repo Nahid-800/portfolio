@@ -218,10 +218,12 @@ const Hero = () => {
     ))}
 </div>
             <div className="w-px h-8 bg-slate-700"></div>
+             
                <div>
-                  <p className="text-2xl font-serif text-white">20+</p>
-                  <p className="text-[10px] text-orange-500/80 uppercase tracking-wider mt-0 font-medium">Projects Done</p>
+                  <p className="text-2xl font-serif text-white">100%</p>
+                  <p className="text-[10px] text-orange-500/80 uppercase tracking-wider mt-0 font-medium">Quality Work</p>
                </div>
+             
             </div>
         </motion.div>
 

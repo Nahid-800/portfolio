@@ -18,7 +18,7 @@ function Projects() {
         },
         {
             id: 2,
-            title: "Flowers Landing page",
+            title: "Flowers Shop Landing page",
             description: "A visually appealing and responsive landing page designed for a floral shop, featuring elegant animations and product showcases.",
             image: "/Projects/flower.avif",
             techStack: ["React", "Swing Library", "Tailwind"],
