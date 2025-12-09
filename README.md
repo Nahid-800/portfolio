@@ -1,5 +1,9 @@
 
-# 👨‍💻 Nahid | Creative Frontend Developer
+<div align="center">
+  <img src="/Hero/Nahid.avif" alt="Nahid" width="120" height="120" style="border-radius: 50%; object-fit: cover; border: 4px solid #f97316;">
+  
+  <h1 style="margin-top: 10px;">Nahid | Creative Frontend Developer</h1>
+</div>
 
 ![Project Screenshot](./public/screenshot.avif)
 
@@ -55,7 +59,7 @@ Make sure you have **Node.js** installed.
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/NahidAhmed-12/portfolio.git
 ```
 
 **2. Navigate to project directory**
@@ -85,13 +89,13 @@ The application will open automatically at `http://localhost:3000`.
 
 ```
 src/
-├── components/
+├── assets/             # Images (screenshot.avif, Nahid.avif)
+├── pages/              # All Components & Pages
 │   ├── Hero.jsx        # Main Hero section with 3D animation
 │   ├── Navbar.jsx      # Responsive Navigation
-│   └── Footer.jsx      # Footer section
-├── assets/             # Images (screenshot.avif, Nahid.avif)
-├── pages/              # Individual Pages
-├── App.js              # Main Component
+│   ├── Footer.jsx      # Footer section
+│   └── ...             # Other page components
+├── App.js              # Main Component & Routes
 └── index.css           # Global Styles & Tailwind Directives
 ```
 
