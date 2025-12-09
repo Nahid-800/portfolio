@@ -1,7 +1,5 @@
 
 <div align="center">
-  <img src="./public/Hero/Nahid.avif" alt="Nahid" width="120" height="120" style="border-radius: 50%; object-fit: cover; border: 4px solid #f97316;">
-  
   <h1 style="margin-top: 10px;">Nahid | Creative Frontend Developer</h1>
 </div>
 
