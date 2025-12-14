@@ -12,7 +12,7 @@ function Projects() {
             title: "E-Commerce Website",
             description: "A full-featured e-commerce platform with cart functionality, payment gateway integration, and user dashboard.",
             image: "/Projects/e-commerce.avif",
-            techStack: ["React", "Tailwind", "Redux"],
+            techStack: ["React", "Tailwind", "Framer-motion"],
             liveLink: "https://e-commerce-10.vercel.app/",
             codeLink: "https://github.com/NahidAhmed-12/e-commerce.git"
         },
