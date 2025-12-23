@@ -14,7 +14,7 @@ function Projects() {
             image: "/Projects/e-commerce.avif",
             techStack: ["React", "Tailwind", "Framer-motion"],
             liveLink: "https://e-commerce-10.vercel.app/",
-            codeLink: "https://github.com/NahidAhmed-12/e-commerce.git"
+            codeLink: "https://github.com/Nahid-800/e-commerce.git"
         },
         {
             id: 2,
@@ -23,7 +23,7 @@ function Projects() {
             image: "/Projects/flower.avif",
             techStack: ["React", "Swing Library", "Tailwind"],
             liveLink: "https://flower-10s.vercel.app/",
-            codeLink: "https://github.com/NahidAhmed-12/Flower.git"
+            codeLink: "https://github.com/Nahid-800/Flower.git"
         },
         {
             id: 3,
@@ -32,7 +32,7 @@ function Projects() {
             image: "/Projects/weathers.avif",
             techStack: ["JavaScript", "API", "Tailwind"],
             liveLink: "https://weathers-10.vercel.app/",
-            codeLink: "https://github.com/NahidAhmed-12/Weather.git"
+            codeLink: "https://github.com/Nahid-800/Weather.git"
         },
         {
             id: 4,
@@ -41,7 +41,7 @@ function Projects() {
             image: "/Projects/crypto.avif",
             techStack: ["React.js", "API", "Tailwind"],
             liveLink: "https://crypto-10.vercel.app/",
-            codeLink: "https://github.com/NahidAhmed-12/crypto-.git"
+            codeLink: "https://github.com/Nahid-800/crypto-.git"
         },
         {
             id: 5,
@@ -50,7 +50,7 @@ function Projects() {
             image: "/Projects/ai-image.avif",
             techStack: ["React", "Pollinations.ai API", "Tailwind"],
             liveLink: "https://ai-image-10.vercel.app/",
-            codeLink: "https://github.com/NahidAhmed-12/AI-image-Generate.git"
+            codeLink: "https://github.com/Nahid-800/AI-image-Generate.git"
         },
         {
             id: 6,
